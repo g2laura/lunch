@@ -31,6 +31,8 @@ gem 'pry'
 
 gem 'polymer-rails'
 
+gem 'polymer-core-rails'
+
 gem 'devise'
 
 gem 'omniauth'
