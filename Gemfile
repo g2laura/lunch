@@ -33,6 +33,10 @@ gem 'polymer-rails'
 
 gem 'devise'
 
+gem 'omniauth'
+
+gem "omniauth-google-oauth2"
+
 gem 'rspec'
 
 gem 'sass-rails', '~> 4.0.2'
