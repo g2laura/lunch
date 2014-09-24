@@ -33,6 +33,8 @@ gem 'polymer-rails'
 
 gem 'polymer-core-rails'
 
+gem 'emcee'
+
 gem 'devise'
 
 gem 'omniauth'

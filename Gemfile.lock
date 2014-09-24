@@ -43,6 +43,10 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    emcee (1.0.7)
+      nokogiri (~> 1.0)
+      nokogumbo (~> 1.1)
+      rails (~> 4.0)
     erubis (2.7.0)
     execjs (2.2.1)
     faraday (0.9.0)
@@ -71,6 +75,8 @@ GEM
     mysql2 (0.3.15)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
+    nokogumbo (1.1.12)
+      nokogiri
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -166,6 +172,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
+  emcee
   jbuilder (~> 1.2)
   jquery-rails
   mysql2
