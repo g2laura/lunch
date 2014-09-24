@@ -1,5 +1,16 @@
 <h2>Sign in</h2>
 
+<div class="centered-panel">
+<core-field>
+  <core-icon icon="menu"></core-icon>
+  <label>I'm a label!</label>
+  <input placeholder="I have a label" flex>
+</core-field>
+
+<paper-input label="Your Name"></paper-input>
+<paper-input multiline label="Enter multiple lines here"></paper-input>
+</div>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>

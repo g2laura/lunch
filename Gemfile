@@ -27,6 +27,8 @@ gem 'polymer-rails'
 
 gem 'polymer-core-rails'
 
+gem 'polymer-paper-rails'
+
 gem 'emcee'
 
 gem 'devise'
