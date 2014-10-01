@@ -7,6 +7,22 @@
  * Licensed under BSD
  * Based on Polymer: http://www.polymer-project.org/
 */
+body {
+  font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+  margin: 0;
+  padding: 24px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+}
+
+paper-input.narrow {
+  width: 150px;
+}
+
 html {
   font-family: 'Gentium Basic', serif;
   -ms-text-size-adjust: 100%;

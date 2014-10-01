@@ -9,7 +9,6 @@
 
 # Ignore node
 /node_modules
-/vendor/assets/components
 
 # Ignore the default SQLite database.
 /db/*.sqlite3

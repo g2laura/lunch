@@ -9,5 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require core-field/core-field
+ *= require core-input/core-input
+ *= require paper-input/paper-input
  *= require_tree .
  */
