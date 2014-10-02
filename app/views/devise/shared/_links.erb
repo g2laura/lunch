@@ -1,8 +1,11 @@
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <a href="<%= new_registration_path(resource_name) %>">
-    <paper-button label="Sign up" raisedButton name="commit" secondary></paper-button>
-  </a>
+  <%= link_to new_registration_path(resource_name) do %>
+    <div class="button raised secondary">
+      <div class="center" fit>Sign up</div>
+      <paper-ripple fit></paper-ripple>
+    </div>
+  <% end %>
 <% end -%>
 
 <div class="login-shared-links">

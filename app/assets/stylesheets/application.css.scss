@@ -12,6 +12,7 @@
  *= require_tree .
  */
 
+/* General */
 .centered-panel {
   display: inline-block;
   margin: 0 auto;
@@ -22,6 +23,7 @@
   text-align: center;
 }
 
+/* Devise */
 .login-buttons { 
   padding: 15px;
 
@@ -34,3 +36,4 @@
   padding-top: 8px;
   font-size: 14px;
 }
+ 

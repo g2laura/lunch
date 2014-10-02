@@ -4,18 +4,43 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "centered-panel"}) do |f| %>
     <core-field>
       <core-icon icon="account-circle"></core-icon>
-      <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="user_email" name="user[email]"></paper-input>
+      <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email"></paper-input>
     </core-field>
 
     <core-field>
       <core-icon icon="lock"></core-icon>
-      <paper-input label="Password" type="password" layout vertical id="user_password" name="user[password]"></paper-input>
+      <paper-input label="Password" type="password" layout vertical id="password"></paper-input>
     </core-field>
 
+    <%= hidden_field(:user, :email) %>
+    <%= hidden_field(:user, :password) %>
+
     <div class="center login-buttons">
-      <paper-button label="Sign in" raisedButton type="submit" name="commit" primary><paper-ripple fit=""></paper-ripple></paper-button>
+      <a class="submit" %>
+        <div class="button raised primary">
+          <div class="center" fit>Log in</div>
+          <paper-ripple fit></paper-ripple>
+        </div>
+      </a>
       <%= render "devise/shared/links" %>
     </div>
   <% end %>
 </section>
 
+<script>
+  (function() {
+
+    var form = document.getElementById('new_user');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+    });
+
+    $('.submit').on('click', function() {
+      $('#user_email').val($('#email').val());
+      $('#user_password').val($('#password').val());
+      form.submit();
+    });
+
+  })();
+</script>

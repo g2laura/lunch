@@ -9,15 +9,20 @@
 </head>
 <body unresolved touch-action="auto">
 
-  <core-header-panel class="raised">
+  <core-header-panel mode="standard">
     <div class="core-header">
       <div class="logo nocollapse font-special">
         Lunch
       </div>
     </div>
-  </core-header-panel>
 
-  <%= yield %>
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "flash #{key} alert-danger" %>
+    <% end %>
+
+    <%= yield %>
+
+  </core-header-panel>
 
 </body>
 </html>
