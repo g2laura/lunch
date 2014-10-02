@@ -12,28 +12,28 @@
  *= require_tree .
  */
 
-/* General */
-.centered-panel {
-  display: inline-block;
-  margin: 0 auto;
-  text-align: left;
-}
+/* Login */
+.login {
+  .centered-panel {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: left;
+  }
 
-.center {
-  text-align: center;
-}
+  .center {
+    text-align: center;
+  }
 
-/* Devise */
-.login-buttons { 
-  padding: 15px;
+  .buttons {
+    padding: 15px;
 
-  a {
-    color: #aaa;
+    a {
+      color: #aaa;
+    }
+  }
+
+  .shared-links {
+    padding-top: 8px;
+    font-size: 14px;
   }
 }
-
-.login-shared-links {
-  padding-top: 8px;
-  font-size: 14px;
-}
- 
