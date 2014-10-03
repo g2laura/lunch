@@ -1,0 +1,11 @@
+
+<script>
+  function submit_form(id, resource, params) {
+    var form = document.getElementById(id);
+
+    $.each(params, function(index, param) {
+      $('#' + resource + '_' + param).val($('#' + param).val());
+    });
+    form.submit();
+  };
+</script>

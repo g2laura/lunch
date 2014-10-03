@@ -25,20 +25,12 @@
   <% end %>
 </section>
 
+<%= render "shared/submit_form" %>
+
 <script>
   (function() {
-
-    var form = document.getElementById('new_user');
-
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-    });
-
     $('.submit').on('click', function() {
-      $('#user_email').val($('#email').val());
-      $('#user_password').val($('#password').val());
-      form.submit();
+      submit_form('new_user', 'user', ['email', 'password']);
     });
-
   })();
 </script>

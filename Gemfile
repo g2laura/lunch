@@ -24,15 +24,19 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# An IRB alternative and runtime developer console
 gem 'pry'
 
+# Package web components in Rails applications using the asset pipeline
 gem 'emcee'
 
+# Flexible authentication solution for Rails with Warden
 gem 'devise'
 
+# Standardized Multi-Provider Authentication
 gem 'omniauth'
 
-gem "omniauth-google-oauth2"
+gem 'omniauth-google-oauth2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

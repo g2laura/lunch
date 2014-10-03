@@ -14,7 +14,7 @@
 
     <core-field>
       <core-icon icon="lock"></core-icon>
-      <paper-input label="Confirm new password" type="password" layout vertical id="confirmation"></paper-input>
+      <paper-input label="Confirm new password" type="password" layout vertical id="password_confirmation"></paper-input>
     </core-field>
 
     <div class="center buttons">
@@ -29,20 +29,12 @@
   <% end %>
 </section>
 
+<%= render "shared/submit_form" %>
+
 <script>
   (function() {
-
-    var form = document.getElementById('new_user');
-
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-    });
-
     $('.submit').on('click', function() {
-      $('#user_password').val($('#password').val());
-      $('#user_password_confirmation').val($('#confirmation').val());
-      form.submit();
+      submit_form('new_user', 'user', ['password', 'password_confirmation']);
     });
-
   })();
 </script>
