@@ -34,6 +34,10 @@ html {
   font-size: 16px;
 }
 
+html a {
+  cursor: pointer;
+}
+
 html /deep/ .font-special {
   font-family: 'Open Sans', sans-serif;
 }

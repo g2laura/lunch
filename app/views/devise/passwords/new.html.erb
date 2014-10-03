@@ -5,12 +5,12 @@
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: "centered-panel", method: :post }) do |f| %>
 
+    <%= hidden_fields(f, :email) %>
+
     <core-field>
       <core-icon icon="account-circle"></core-icon>
       <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email"></paper-input>
     </core-field>
-
-    <%= f.hidden_field(:email) %>
 
     <div class="center buttons">
       <a class="submit" %>

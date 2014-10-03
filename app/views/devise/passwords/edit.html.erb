@@ -5,9 +5,7 @@
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: "centered-panel", method: :put }) do |f| %>
 
-    <%= f.hidden_field :reset_password_token %>
-    <%= f.hidden_field(:password) %>
-    <%= f.hidden_field(:password_confirmation) %>
+    <%= hidden_fields(f, :reset_password_token, :password, :password_confirmation) %>
 
     <core-field>
       <core-icon icon="lock"></core-icon>
