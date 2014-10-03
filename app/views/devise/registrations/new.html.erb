@@ -2,7 +2,7 @@
 
 <section class="login">
   <h3>Sign up</h3>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "centered-panel"}) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "centered-panel" }) do |f| %>
     <core-field>
       <core-icon icon="account-circle"></core-icon>
       <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email"></paper-input>
@@ -18,9 +18,9 @@
       <paper-input label="Password confirmation" type="password" layout vertical id="confirmation"></paper-input>
     </core-field>
 
-    <%= hidden_field(:user, :email) %>
-    <%= hidden_field(:user, :password) %>
-    <%= hidden_field(:user, :password_confirmation) %>
+    <%= f.hidden_field(:email) %>
+    <%= f.hidden_field(:password) %>
+    <%= f.hidden_field(:password_confirmation) %>
 
     <div class="center buttons">
       <a class="submit" %>

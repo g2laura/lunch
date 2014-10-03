@@ -1,12 +1,42 @@
-<h2>Resend unlock instructions</h2>
+<%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+<section class="login">
+  <h3>Resend unlock instructions</h3>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+  <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { class: "centered-panel", method: :post }) do |f| %>
 
-  <div><%= f.submit "Resend unlock instructions" %></div>
-<% end %>
+    <core-field>
+      <core-icon icon="account-circle"></core-icon>
+      <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email"></paper-input>
+    </core-field>
 
-<%= render "devise/shared/links" %>
+    <%= f.hidden_field(:email) %>
+
+    <div class="center buttons">
+      <a class="submit" %>
+        <div class="button raised primary">
+          <div class="center" fit>Resend instructions</div>
+          <paper-ripple fit></paper-ripple>
+        </div>
+      </a>
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+</section>
+
+<script>
+  (function() {
+
+    var form = document.getElementById('new_user');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+    });
+
+    $('.submit').on('click', function() {
+      $('#user_email').val($('#email').val());
+      form.submit();
+    });
+
+  })();
+</script>

@@ -1,29 +1,68 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<section class="login">
+  <h3>Edit Account</h3>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "centered-panel", method: :put }) do |f| %>
+    <core-field>
+      <core-icon icon="account-circle"></core-icon>
+      <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email"></paper-input>
+    </core-field>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <core-field>
+      <core-icon icon="lock"></core-icon>
+      <paper-input label="Password" type="password" layout vertical id="password"></paper-input>
+    </core-field>
+
+    <core-field>
+      <core-icon icon="lock"></core-icon>
+      <paper-input label="Password confirmation" type="password" layout vertical id="confirmation"></paper-input>
+    </core-field>
+
+    <core-field>
+      <core-icon icon="lock"></core-icon>
+      <paper-input label="Current password" type="password" layout vertical id="current"></paper-input>
+    </core-field>
+
+    <%= f.hidden_field(:email) %>
+    <%= f.hidden_field(:password) %>
+    <%= f.hidden_field(:password_confirmation) %>
+    <%= f.hidden_field(:current_password) %>
+
+    <div class="center buttons">
+      <a class="submit" %>
+        <div class="button raised primary">
+          <div class="center" fit>Update</div>
+          <paper-ripple fit></paper-ripple>
+        </div>
+      </a>
+      <%= render "devise/shared/links" %>
+
+      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+      <%= link_to "Back", :back %>
+    </div>
   <% end %>
+</section>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+<script>
+  (function() {
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+    var form = document.getElementById('new_user');
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %></div>
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+    });
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+    $('.submit').on('click', function() {
+      $('#user_email').val($('#email').val());
+      $('#user_password').val($('#password').val());
+      $('#user_password_confirmation').val($('#confirmation').val());
+      form.submit();
+    });
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+  })();
+</script>
