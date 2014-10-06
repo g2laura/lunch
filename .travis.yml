@@ -1,3 +1,5 @@
 language: ruby
 rbenv:
   - 2.1.2p95
+before_script:
+  - mysql -e 'create database IF NOT EXISTS lunch_test;'
