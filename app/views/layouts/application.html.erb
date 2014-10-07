@@ -23,7 +23,9 @@
     </core-toolbar>
 
     <% flash.each do |key, value| %>
-      <%= content_tag :div, value, class: "flash #{key} alert alert-danger" %>
+      <div class="<%= flash_class(key) %>">
+        <%= value %>
+      </div>
     <% end %>
 
     <%= yield %>
