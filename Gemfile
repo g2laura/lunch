@@ -38,11 +38,6 @@ gem 'omniauth'
 
 gem 'omniauth-google-oauth2'
 
-# CI::Reporter is an add-on to popular test frameworks that allows you to generate XML reports
-gem 'ci_reporter'
-
-gem 'ci_reporter_rspec'
-
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
