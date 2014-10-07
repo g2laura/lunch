@@ -9,10 +9,8 @@ describe ApplicationHelper do
 
   describe "#hidden_fields" do
     it "render the form hidden fields" do
-      expected_fields = "<input id=\"user_email\" name=\"user[email]\" type=\"hidden\" value=\"#{user.email}\" />" +
-        "<input id=\"user_password\" name=\"user[password]\" type=\"hidden\" value=\"#{user.password}\" />"
-
-      expect(hidden_fields builder, :email, :password).to include expected_fields
+      expect(hidden_fields builder, :email).to have_tag('input', :with => { :name => "user[email]", :type => 'hidden'})
+      expect(hidden_fields builder, :password).to have_tag('input', :with => { :name => "user[password]", :type => 'hidden'})
     end
   end
 end
