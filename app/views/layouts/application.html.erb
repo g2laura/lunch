@@ -8,14 +8,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body unresolved touch-action="auto">
-
+<app-bar></app-bar>
   <core-header-panel mode="standard">
-    <div class="core-header">
-      <paper-shadow z="2"></paper-shadow>
-      <div class="logo nocollapse font-special">
-        Lunch
-      </div>
-    </div>
+    <core-toolbar>
+      <% if user_signed_in? %>
+        <core-icon-button icon="menu" on-tap="{{menuAction}}"></core-icon-button>
+      <% end %>
+      <div flex>Lunch</div>
+      <% if user_signed_in? %>
+        <%= link_to(destroy_user_session_path, :method => :delete) do %>
+          <core-icon-button icon="settings-power"></core-icon-button>
+        <% end %>
+      <% end %>
+    </core-toolbar>
 
     <% flash.each do |key, value| %>
       <%= content_tag :div, value, class: "flash #{key} alert alert-danger" %>
