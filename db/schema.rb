@@ -11,7 +11,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008152913) do
+ActiveRecord::Schema.define(version: 20141008161030) do
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "menu_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["menu_id"], name: "index_categories_on_menu_id", using: :btree
+
+  create_table "items", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "price",       precision: 8, scale: 2
+    t.string   "image"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
+
+  create_table "menus", force: true do |t|
+    t.integer  "restaurant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "menus", ["restaurant_id"], name: "index_menus_on_restaurant_id", using: :btree
+
+  create_table "restaurants", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "slogan"
+    t.string   "phone_number"
+    t.string   "email"
+    t.text     "address"
+    t.string   "twitter"
+    t.string   "instagram"
+    t.string   "facebook"
+    t.string   "website"
+    t.boolean  "delivery"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
