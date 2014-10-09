@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :trackable, :validatable, :omniauth_providers => [:google_oauth2]
 
+  belongs_to :restaurant
+
   def self.from_omniauth(auth)
     if user = User.find_by_email(auth.info.email)
       user.provider = auth.provider
