@@ -2,8 +2,6 @@ Lunch::Application.routes.draw do
 
   resources :items
 
-  resources :categories
-
   resources :menus
 
   resources :restaurants
