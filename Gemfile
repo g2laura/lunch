@@ -43,6 +43,9 @@ gem 'carrierwave'
 
 gem 'mini_magick'
 
+# A tagging plugin for Rails applications that allows for custom tagging along dynamic contexts.
+gem 'acts-as-taggable-on'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
