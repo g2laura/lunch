@@ -14,6 +14,7 @@ RSpec.describe "restaurants/index", :type => :view do
         :instagram => "Instagram",
         :facebook => "Facebook",
         :website => "Website",
+        :image => "http://maidosakebar.com/wp-content/uploads/2014/06/Sushi_pic_1.jpeg",
         :delivery => false
       ),
       Restaurant.create!(
@@ -27,6 +28,7 @@ RSpec.describe "restaurants/index", :type => :view do
         :instagram => "Instagram",
         :facebook => "Facebook",
         :website => "Website",
+        :image => "http://maidosakebar.com/wp-content/uploads/2014/06/Sushi_pic_1.jpeg",
         :delivery => false
       )
     ])
@@ -34,16 +36,6 @@ RSpec.describe "restaurants/index", :type => :view do
 
   it "renders a list of restaurants" do
     render
-    assert_select "tr>td", :text => "Name".to_s
-    assert_select "tr>td", :text => "MyText".to_s
-    assert_select "tr>td", :text => "Slogan".to_s
-    assert_select "tr>td", :text => "Phone Number".to_s
-    assert_select "tr>td", :text => "Email".to_s
-    assert_select "tr>td", :text => "MyText".to_s
-    assert_select "tr>td", :text => "Twitter".to_s
-    assert_select "tr>td", :text => "Instagram".to_s
-    assert_select "tr>td", :text => "Facebook".to_s
-    assert_select "tr>td", :text => "Website".to_s
-    assert_select "tr>td", :text => false.to_s
+    assert_select "div.image", :style => "background-image: url(http://maidosakebar.com/wp-content/uploads/2014/06/Sushi_pic_1.jpeg)".to_s.to_s
   end
 end
