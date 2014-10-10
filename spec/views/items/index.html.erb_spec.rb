@@ -7,15 +7,13 @@ RSpec.describe "items/index", :type => :view do
         :name => "Name",
         :description => "MyText",
         :price => "9.99",
-        :image => "Image",
-        :category => nil
+        :image => "Image"
       ),
       Item.create!(
         :name => "Name",
         :description => "MyText",
         :price => "9.99",
-        :image => "Image",
-        :category => nil
+        :image => "Image"
       )
     ])
   end
@@ -26,6 +24,5 @@ RSpec.describe "items/index", :type => :view do
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
     assert_select "tr>td", :text => "9.99".to_s, :count => 2
     assert_select "tr>td", :text => "Image".to_s, :count => 2
-    assert_select "tr>td", :text => nil.to_s, :count => 2
   end
 end

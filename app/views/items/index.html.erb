@@ -7,7 +7,6 @@
       <th>Description</th>
       <th>Price</th>
       <th>Image</th>
-      <th>Category</th>
       <th></th>
       <th></th>
       <th></th>
@@ -21,7 +20,6 @@
         <td><%= item.description %></td>
         <td><%= item.price %></td>
         <td><%= item.image %></td>
-        <td><%= item.category %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

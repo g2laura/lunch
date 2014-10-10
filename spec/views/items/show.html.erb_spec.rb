@@ -6,8 +6,7 @@ RSpec.describe "items/show", :type => :view do
       :name => "Name",
       :description => "MyText",
       :price => "9.99",
-      :image => "Image",
-      :category => nil
+      :image => "Image"
     ))
   end
 
@@ -17,6 +16,5 @@ RSpec.describe "items/show", :type => :view do
     expect(rendered).to match(/MyText/)
     expect(rendered).to match(/9.99/)
     expect(rendered).to match(/Image/)
-    expect(rendered).to match(//)
   end
 end
