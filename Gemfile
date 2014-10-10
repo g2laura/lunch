@@ -38,6 +38,11 @@ gem 'omniauth'
 
 gem 'omniauth-google-oauth2'
 
+# Flexible way to upload files from Ruby applications
+gem 'carrierwave'
+
+gem 'mini_magick'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
