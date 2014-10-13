@@ -22,10 +22,8 @@ RSpec.describe RestaurantsController, :type => :controller do
 
   include Devise::TestHelpers
 
-  before (:each) do
-    @user = FactoryGirl.create :user
-    sign_in @user
-  end
+  let(:user)    { FactoryGirl.create :user }
+  before(:each) { sign_in user }
 
   # This should return the minimal set of attributes required to create a valid
   # Restaurant. As you add validations to Restaurant, be sure to
@@ -39,9 +37,10 @@ RSpec.describe RestaurantsController, :type => :controller do
   # RestaurantsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  let(:restaurant) { Restaurant.create! valid_attributes }
+
   describe "GET index" do
     it "assigns all restaurants as @restaurants" do
-      restaurant = Restaurant.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:restaurants)).to eq([restaurant])
     end
@@ -49,7 +48,6 @@ RSpec.describe RestaurantsController, :type => :controller do
 
   describe "GET show" do
     it "assigns the requested restaurant as @restaurant" do
-      restaurant = Restaurant.create! valid_attributes
       get :show, {:id => restaurant.to_param}, valid_session
       expect(assigns(:restaurant)).to eq(restaurant)
     end
@@ -64,7 +62,6 @@ RSpec.describe RestaurantsController, :type => :controller do
 
   describe "GET edit" do
     it "assigns the requested restaurant as @restaurant" do
-      restaurant = Restaurant.create! valid_attributes
       get :edit, {:id => restaurant.to_param}, valid_session
       expect(assigns(:restaurant)).to eq(restaurant)
     end
@@ -98,20 +95,17 @@ RSpec.describe RestaurantsController, :type => :controller do
       }
 
       it "updates the requested restaurant" do
-        restaurant = Restaurant.create! valid_attributes
         put :update, {:id => restaurant.to_param, :restaurant => new_attributes}, valid_session
         restaurant.reload
         expect(restaurant.description).to eq("best burgers in the world")
       end
 
       it "assigns the requested restaurant as @restaurant" do
-        restaurant = Restaurant.create! valid_attributes
         put :update, {:id => restaurant.to_param, :restaurant => valid_attributes}, valid_session
         expect(assigns(:restaurant)).to eq(restaurant)
       end
 
       it "redirects to the restaurant" do
-        restaurant = Restaurant.create! valid_attributes
         put :update, {:id => restaurant.to_param, :restaurant => valid_attributes}, valid_session
         expect(response).to redirect_to(restaurant)
       end
@@ -130,6 +124,13 @@ RSpec.describe RestaurantsController, :type => :controller do
       restaurant = Restaurant.create! valid_attributes
       delete :destroy, {:id => restaurant.to_param}, valid_session
       expect(response).to redirect_to(restaurants_url)
+    end
+  end
+
+  describe "Vote for a restaurant" do
+    it "adds a restaurant to the current user" do
+      get :vote, {restaurant_id: restaurant.to_param, format: :json}, valid_session
+      expect(restaurant.users.first).to eq(user)
     end
   end
 

@@ -35,6 +35,11 @@ class RestaurantsController < ApplicationController
     respond_with(@restaurant)
   end
 
+  def vote
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    current_user.update(restaurant: @restaurant)
+  end
+
   private
     def set_restaurant
       @restaurant = Restaurant.find(params[:id])
