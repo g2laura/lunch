@@ -46,6 +46,12 @@ gem 'mini_magick'
 # A tagging plugin for Rails applications that allows for custom tagging along dynamic contexts.
 gem 'acts-as-taggable-on'
 
+# Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.
+gem 'bootstrap-sass'
+
+# A tool to parse CSS and add vendor prefixes to CSS rules
+gem 'autoprefixer-rails'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

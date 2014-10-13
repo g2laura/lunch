@@ -1,13 +1,11 @@
-<% @restaurants.each do |restaurant| %>
-  <section>
-    <div class="card image" style="background-image: url(<%= restaurant.image.url(:thumb).to_s %>);" onclick="vote(<%= restaurant.id %>);">
-      <paper-ripple class="recenteringTouch" fit></paper-ripple>
-    </div>
-    <%= link_to 'Show', restaurant %>
-    <%= link_to 'Edit', edit_restaurant_path(restaurant) %>
-    <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </section>
-<% end %>
-
+<div class="row">
+  <% @restaurants.each do |restaurant| %>
+    <section class="col-md-4">
+      <div class="card image" style="background-image: url(<%= restaurant.image.url(:thumb).to_s %>);" onclick="vote(<%= restaurant.id %>);">
+        <paper-ripple class="recenteringTouch" fit></paper-ripple>
+      </div>
+    </section>
+  <% end %>
+</div>
 <%= link_to 'New Restaurant', new_restaurant_path %>
 

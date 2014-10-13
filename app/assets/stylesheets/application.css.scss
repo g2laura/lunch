@@ -12,6 +12,12 @@
  *= require_tree .
  */
 
+@import "bootstrap";
+
+.container-fluid {
+  padding: 0;
+}
+
 /* Login */
 .login {
   .centered-panel {
