@@ -18,6 +18,11 @@
   padding: 0;
 }
 
+/* Menu */
+paper-menu-button::shadow .paper-menu-button-overlay-bg {
+  background: #45ada8;
+}
+
 /* Login */
 .login {
   .centered-panel {
