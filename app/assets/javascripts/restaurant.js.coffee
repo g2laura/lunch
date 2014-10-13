@@ -1,9 +1,10 @@
-window.vote = (restaurant) ->
+window.vote = (restaurant, name) ->
   $.ajax
     type: "GET"
     url: "restaurants/" + restaurant + "/vote"
     success: (data) ->
-      alert("Voted for: " + data.name)
+      $('.toast').attr("text", "Voted for " + name)
+      document.querySelector('.toast').show()
       return;
 
   return;

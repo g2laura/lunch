@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require platform/platform
 //= require_tree .
+
+
+function discardDraft(el) {
+  el.show();
+}
