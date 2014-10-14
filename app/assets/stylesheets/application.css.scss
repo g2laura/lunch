@@ -23,6 +23,24 @@ paper-menu-button::shadow .paper-menu-button-overlay-bg {
   background: #45ada8;
 }
 
+paper-item::shadow {
+  #label {
+    color: white;
+  }
+
+  #icon {
+    color: white;
+    background: transparent;
+    fill: white;
+  }
+}
+
+core-icon-button::shadow core-icon[icon="settings-power"] {
+  &:host:hover {
+    color: white;
+  }
+}
+
 /* Login */
 .login {
   .centered-panel {
