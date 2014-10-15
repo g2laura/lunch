@@ -1,5 +1,10 @@
-.card.image {
-  background-size: cover;
-  cursor: pointer;
-  border-radius: 5px;
+.card {
+  width: 200px;
+  height: 200px;
+
+  &.image {
+    background-size: cover;
+    cursor: pointer;
+    border-radius: 5px;
+  }
 }

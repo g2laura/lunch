@@ -13,13 +13,27 @@
     <core-toolbar>
       <% if user_signed_in? %>
         <paper-menu-button icon="menu">
-          <paper-item icon="refresh" label="Refresh"></paper-item>
-          <paper-item icon="favorite" label="Favorite"></paper-item>
-          <paper-item icon="delete" label="Delete"></paper-item>
-          <paper-item icon="bookmark" label="Bookmark"></paper-item>
+          <paper-item icon="settings" label="Settings"></paper-item>
+          <% if current_user.is_admin? %>
+            <paper-item icon="account-child" label="Manage Users">
+              <%= link_to '', user_index_path %>
+            </paper-item>
+            <paper-item icon="alarm" label="Manage Lunch"></paper-item>
+            <paper-item icon="room" label="New Restaurant">
+              <%= link_to '', new_restaurant_path %>
+            </paper-item>
+            <paper-item icon="list" label="Export List">
+          </paper-item>
+          <% end %>
         </paper-menu-button>
       <% end %>
-      <div flex>Lunch</div>
+      <div flex>
+        <% if user_signed_in? %>
+          Choose wisely!
+        <% else %>
+          Lunch
+        <% end %>
+      </div>
       <% if user_signed_in? %>
         <%= link_to(destroy_user_session_path, :method => :delete) do %>
           <core-icon-button icon="settings-power"></core-icon-button>

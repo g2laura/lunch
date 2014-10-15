@@ -790,4 +790,131 @@ section > * {
 }
 .alert-danger .alert-link {
   color: #843534;
-}  
+}
+
+/* 2.2.8. Hover effect */
+.hover-effect {
+/*  display: block; */
+  position: relative;
+  background: none;
+  overflow: hidden;
+  /*z-index: 0;*/
+  /*color skin*/
+  /* style1 : checked icon */ }
+  .hover-effect:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+    -ms-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+    -webkit-transform: rotateY(200deg) scale(0.5, 0.5);
+    -moz-transform: rotateY(200deg) scale(0.5, 0.5);
+    -ms-transform: rotateY(200deg) scale(0.5, 0.5);
+    -o-transform: rotateY(200deg) scale(0.5, 0.5);
+    transform: rotateY(200deg) scale(0.5, 0.5);
+    background: image-url("hover-effect.png") no-repeat center;
+    filter: alpha(opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+    background-color: rgba(69, 173, 168, 0.6); }
+  .hover-effect.image {
+  /*  display: block; */
+    position: relative;
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+    -ms-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+    -webkit-backface-visibility: hidden; }
+  .hover-effect:hover:after {
+    visibility: visible;
+    -webkit-transform: rotateY(0deg) scale(1, 1);
+    -moz-transform: rotateY(0deg) scale(1, 1);
+    -ms-transform: rotateY(0deg) scale(1, 1);
+    -o-transform: rotateY(0deg) scale(1, 1);
+    transform: rotateY(0deg) scale(1, 1);
+    filter: alpha(opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1; }
+  .hover-effect:hover.image {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1); }
+  .hover-effect.yellow:after {
+    background-color: rgba(255, 255, 40, 0.6); }
+  .hover-effect.style1:after {
+    color: #fff;
+    background: none;
+    content: "\e8ba";
+    font-family: "soap-icons";
+    font-size: 1.6667em;
+    text-align: center;
+    line-height: 50px;
+    border: 2px solid #fff;
+    -webkit-border-radius: 50% 50% 50% 50%;
+    -moz-border-radius: 50% 50% 50% 50%;
+    -ms-border-radius: 50% 50% 50% 50%;
+    border-radius: 50% 50% 50% 50%;
+    width: 50px;
+    height: 50px;
+    left: 50%;
+    top: 50%;
+    margin-left: -25px;
+    margin-top: -25px; }
+  .hover-effect.style1:hover {
+    background: #01b7f2; }
+    .hover-effect.style1:hover image {
+      filter: alpha(opacity=50);
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+      -moz-opacity: 0.5;
+      -khtml-opacity: 0.5;
+      opacity: 0.5; }
+
+.selected-effect {
+/*  display: block; */
+  position: relative;
+  background: none;
+  overflow: hidden;
+  background: #01b7f2; }
+  .selected-effect.image {
+    filter: alpha(opacity=50);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5; }
+  .selected-effect:after {
+    position: absolute;
+    color: #fff;
+    background: none;
+    content: "\e8ba";
+    font-family: "soap-icons";
+    font-size: 1.6667em;
+    text-align: center;
+    line-height: 50px;
+    border: 2px solid #fff;
+    -webkit-border-radius: 50% 50% 50% 50%;
+    -moz-border-radius: 50% 50% 50% 50%;
+    -ms-border-radius: 50% 50% 50% 50%;
+    border-radius: 50% 50% 50% 50%;
+    width: 50px;
+    height: 50px;
+    left: 50%;
+    top: 50%;
+    margin-left: -25px;
+    margin-top: -25px; }
+
+.animated .hover-effect {
+  z-index: 0; }

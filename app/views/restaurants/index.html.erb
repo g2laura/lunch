@@ -1,12 +1,10 @@
 <div class="row">
   <% @restaurants.each do |restaurant| %>
-    <section class="col-md-4">
-      <div class="card image" style="background-image: url(<%= restaurant.image.url(:thumb).to_s %>);" onclick="vote(<%= restaurant.id %>, '<%= restaurant.name %>' );">
+    <section class="col-xs-3">
+      <div class="card image hover-effect" style="background-image: url(<%= restaurant.image.url(:thumb).to_s %>);" onclick="vote(<%= restaurant.id %>, '<%= restaurant.name %>' );">
         <paper-ripple class="recenteringTouch" fit></paper-ripple>
       </div>
     </section>
   <% end %>
 </div>
 <paper-toast class="toast" text="" onclick="discardDraft(this);"></paper-toast>
-<%= link_to 'New Restaurant', new_restaurant_path %>
-
