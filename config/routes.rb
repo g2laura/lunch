@@ -1,5 +1,6 @@
 Lunch::Application.routes.draw do
 
+  get "user/index"
   resources :items
 
   resources :menus
