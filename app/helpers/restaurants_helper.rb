@@ -16,7 +16,7 @@ module RestaurantsHelper
       html << '" '
     end
     html << 'style = "background-image: url(' + image_url(restaurant) +');" '
-    html << 'onclick = "vote(' + restaurant.id.to_s + ', \'' + restaurant.name + '\');" '
+    html << 'onclick = "vote(' + restaurant.id.to_s + ');" '
     html << 'id = "restaurant_' + restaurant.id.to_s + '">'
 
     html.html_safe
