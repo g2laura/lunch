@@ -52,6 +52,9 @@ gem 'bootstrap-sass'
 # A tool to parse CSS and add vendor prefixes to CSS rules
 gem 'autoprefixer-rails'
 
+# Authorization Gem for Ruby on Rails.
+gem 'cancan'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
