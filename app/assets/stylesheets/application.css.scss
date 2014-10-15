@@ -66,3 +66,14 @@ core-icon-button::shadow core-icon[icon="settings-power"] {
     font-size: 14px;
   }
 }
+
+
+/* form */
+.file, .bootstrap-filestyle {
+  max-width: 280px;
+
+  .btn-primary {
+    background-color: #45ada8;
+    border-color: #45ada8;
+  }
+}
