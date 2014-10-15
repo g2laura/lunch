@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.ordered_by_votes
     respond_with(@restaurants)
   end
 
