@@ -1,14 +1,11 @@
 <div class="col-12-xs">
   <%= form_for @restaurant, :html => { :multipart => true } do |f| %>
 
-    <%= hidden_fields(f, :image, :name, :description, :slogan, :phone_number, :email, :address, :twitter, :instagram, :facebook, :website, :delivery) %>
+    <%= hidden_fields(f, :name, :description, :slogan, :phone_number, :email, :address, :twitter, :instagram, :facebook, :website, :delivery) %>
 
-    <input type="file" class="filestyle file" data-buttonText="Find file" data-buttonName="btn-primary" id="image">
+    <input type="file" class="filestyle file" data-buttonText="Image" data-buttonName="btn-primary" id="restaurant_image" name="restaurant[image]">
     <core-field>
-      <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email"></paper-input>
-    </core-field>
-    <core-field>
-      <paper-input label="Name" type="text" layout vertical id="name"></paper-input>
+      <paper-input label="Name" type="text" layout vertical id="name" required></paper-input>
     </core-field>
     <core-field>
       <paper-input multiline label="Description" layout vertical id="description"></paper-input>
@@ -17,35 +14,28 @@
       <paper-input label="Slogan" type="text" layout vertical id="slogan"></paper-input>
     </core-field>
     <core-field>
-      <paper-input label="Email" type="number" error="Please insert a phone number" layout vertical id="phone_number"></paper-input>
+      <paper-input label="Phone Number" type="number" error="Please insert a phone number" layout vertical id="phone_number"></paper-input>
     </core-field>
     <core-field>
       <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email"></paper-input>
     </core-field>
-    <div class="field">
-      <%= f.label :address %><br>
-      <%= f.text_area :address %>
-    </div>
-    <div class="field">
-      <%= f.label :twitter %><br>
-      <%= f.text_field :twitter %>
-    </div>
-    <div class="field">
-      <%= f.label :instagram %><br>
-      <%= f.text_field :instagram %>
-    </div>
-    <div class="field">
-      <%= f.label :facebook %><br>
-      <%= f.text_field :facebook %>
-    </div>
-    <div class="field">
-      <%= f.label :website %><br>
-      <%= f.text_field :website %>
-    </div>
-    <div class="field">
-      <%= f.label :delivery %><br>
-      <%= f.check_box :delivery %>
-    </div>
+    <core-field>
+      <paper-input multiline label="Address" layout vertical id="address"></paper-input>
+    </core-field>
+    <core-field>
+      <paper-input label="Twitter" type="text" layout vertical id="twitter"></paper-input>
+    </core-field>
+    <core-field>
+      <paper-input label="Instagram" type="text" layout vertical id="instagram"></paper-input>
+    </core-field>
+    <core-field>
+      <paper-input label="Facebook" type="text" layout vertical id="facebook"></paper-input>
+    </core-field>
+    <core-field>
+      <paper-input label="Website" type="text" layout vertical id="website"></paper-input>
+    </core-field>
+    <paper-checkbox label="Delivery" id="delivery"></paper-checkbox>
+
     <div>
       <a class="submit" %>
         <div class="button raised primary">
@@ -57,10 +47,12 @@
   <% end %>
 </div>
 
+<%= render "shared/submit_form" %>
+
 <script>
   (function() {
     $('.submit').on('click', function() {
-      submit_form('new_restaurant', 'restaurant', ['image', 'name', 'description', 'slogan', 'phone_number', 'email', 'address', 'twitter', 'instagram', 'facebook', 'website', 'delivery']);
+      submit_form('new_restaurant', 'restaurant', ['name', 'description', 'slogan', 'phone_number', 'email', 'address', 'twitter', 'instagram', 'facebook', 'website', 'delivery']);
     });
   })();
 </script>
