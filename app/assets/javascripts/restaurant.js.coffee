@@ -3,7 +3,9 @@ window.vote = (restaurant, name) ->
     type: "GET"
     url: "restaurants/" + restaurant + "/vote"
     success: (data) ->
-      $('.toast').attr("text", "Voted for " + name)
+      $('.card').removeClass('selected')
+      $('#restaurant_' + restaurant).addClass('selected')
+      $('.toast').attr('text', 'Voted for ' + name)
       document.querySelector('.toast').show()
       return;
 

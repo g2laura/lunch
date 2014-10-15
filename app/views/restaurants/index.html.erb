@@ -1,7 +1,7 @@
 <div class="row">
   <% @restaurants.each do |restaurant| %>
     <section class="col-xs-3">
-      <div class="card image hover-effect" style="background-image: url(<%= image_url(restaurant) %>);" onclick="vote(<%= restaurant.id %>, '<%= restaurant.name %>' );">
+      <%= card_image_div(restaurant, current_user) %>
         <paper-ripple class="recenteringTouch" fit></paper-ripple>
       </div>
       <div class="row">
