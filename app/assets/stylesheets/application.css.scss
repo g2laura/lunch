@@ -18,6 +18,16 @@
   padding: 0;
 }
 
+.centered-panel {
+  display: inline-block;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
 /* Menu */
 paper-menu-button::shadow .paper-menu-button-overlay-bg {
   background: #45ada8;
@@ -43,16 +53,6 @@ core-icon-button::shadow core-icon[icon="settings-power"] {
 
 /* Login */
 .login {
-  .centered-panel {
-    display: inline-block;
-    margin: 0 auto;
-    text-align: left;
-  }
-
-  .center {
-    text-align: center;
-  }
-
   .buttons {
     padding: 15px;
 

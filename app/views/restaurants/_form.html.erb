@@ -1,51 +1,49 @@
-<div class="col-12-xs">
-  <%= form_for @restaurant, :html => { :multipart => true } do |f| %>
+<%= form_for @restaurant, :html => { :multipart => true } do |f| %>
 
-    <%= hidden_fields(f, :name, :description, :slogan, :phone_number, :email, :address, :twitter, :instagram, :facebook, :website, :delivery) %>
+  <%= hidden_fields(f, :name, :description, :slogan, :phone_number, :email, :address, :twitter, :instagram, :facebook, :website, :delivery) %>
 
-    <input type="file" class="filestyle file" data-buttonText="Image" data-buttonName="btn-primary" id="restaurant_image" name="restaurant[image]">
-    <core-field>
-      <paper-input label="Name" type="text" layout vertical id="name" required></paper-input>
-    </core-field>
-    <core-field>
-      <paper-input multiline label="Description" layout vertical id="description"></paper-input>
-    </core-field>
-    <core-field>
-      <paper-input label="Slogan" type="text" layout vertical id="slogan"></paper-input>
-    </core-field>
-    <core-field>
-      <paper-input label="Phone Number" type="number" error="Please insert a phone number" layout vertical id="phone_number"></paper-input>
-    </core-field>
-    <core-field>
-      <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email"></paper-input>
-    </core-field>
-    <core-field>
-      <paper-input multiline label="Address" layout vertical id="address"></paper-input>
-    </core-field>
-    <core-field>
-      <paper-input label="Twitter" type="text" layout vertical id="twitter"></paper-input>
-    </core-field>
-    <core-field>
-      <paper-input label="Instagram" type="text" layout vertical id="instagram"></paper-input>
-    </core-field>
-    <core-field>
-      <paper-input label="Facebook" type="text" layout vertical id="facebook"></paper-input>
-    </core-field>
-    <core-field>
-      <paper-input label="Website" type="text" layout vertical id="website"></paper-input>
-    </core-field>
-    <paper-checkbox label="Delivery" id="delivery"></paper-checkbox>
+  <input type="file" class="filestyle file" data-buttonText="Image" data-buttonName="btn-primary" id="restaurant_image" name="restaurant[image]">
+  <core-field>
+    <paper-input label="Name" type="text" layout vertical id="name" required></paper-input>
+  </core-field>
+  <core-field>
+    <paper-input multiline label="Description" layout vertical id="description"></paper-input>
+  </core-field>
+  <core-field>
+    <paper-input label="Slogan" type="text" layout vertical id="slogan"></paper-input>
+  </core-field>
+  <core-field>
+    <paper-input label="Phone Number" type="number" error="Please insert a phone number" layout vertical id="phone_number"></paper-input>
+  </core-field>
+  <core-field>
+    <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email"></paper-input>
+  </core-field>
+  <core-field>
+    <paper-input multiline label="Address" layout vertical id="address"></paper-input>
+  </core-field>
+  <core-field>
+    <paper-input label="Twitter" type="text" layout vertical id="twitter"></paper-input>
+  </core-field>
+  <core-field>
+    <paper-input label="Instagram" type="text" layout vertical id="instagram"></paper-input>
+  </core-field>
+  <core-field>
+    <paper-input label="Facebook" type="text" layout vertical id="facebook"></paper-input>
+  </core-field>
+  <core-field>
+    <paper-input label="Website" type="text" layout vertical id="website"></paper-input>
+  </core-field>
+  <paper-checkbox label="Delivery" id="delivery"></paper-checkbox>
 
-    <div>
-      <a class="submit" %>
-        <div class="button raised primary">
-          <div class="center" fit>Create</div>
-          <paper-ripple fit></paper-ripple>
-        </div>
-      </a>
-    </div>
-  <% end %>
-</div>
+  <div class="center">
+    <a class="submit" %>
+      <div class="button raised primary">
+        <div class="center" fit>Create</div>
+        <paper-ripple fit></paper-ripple>
+      </div>
+    </a>
+  </div>
+<% end %>
 
 <%= render "shared/submit_form" %>
 
