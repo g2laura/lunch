@@ -22,7 +22,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.save
-    respond_with(@restaurant)
+    redirect_to action: 'index'
   end
 
   def update

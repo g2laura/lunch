@@ -4,6 +4,21 @@
       <div class="card image hover-effect" style="background-image: url(<%= image_url(restaurant) %>);" onclick="vote(<%= restaurant.id %>, '<%= restaurant.name %>' );">
         <paper-ripple class="recenteringTouch" fit></paper-ripple>
       </div>
+      <div class="row">
+        <div class="manage-restaurant col-xs-6">
+          <% if current_user.is_admin? %>
+            <%= link_to edit_restaurant_path(restaurant) do %>
+              <paper-icon-button icon="create"></paper-icon-button>
+            <% end %>
+            <%= link_to restaurant, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <paper-icon-button icon="delete"></paper-icon-button>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="vote-count col-xs-6">
+          Votes: <%= restaurant.users.count %>
+        </div>
+      </div>
     </section>
   <% end %>
 </div>

@@ -29,9 +29,9 @@
       <% end %>
       <div flex>
         <% if user_signed_in? %>
-          Choose wisely!
+          <%= link_to "Choose wisely!", root_path %>
         <% else %>
-          Lunch
+          <%= link_to "Lunch", root_path %>
         <% end %>
       </div>
       <% if user_signed_in? %>

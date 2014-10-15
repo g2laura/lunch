@@ -1,3 +1,4 @@
+/* index */
 .card {
   max-width: 250px;
   height: 200px;
@@ -6,5 +7,21 @@
     background-size: cover;
     cursor: pointer;
     border-radius: 5px;
+  }
+}
+
+.manage-restaurant {
+  margin-top: -14px;
+
+  paper-icon-button::shadow {
+    #icon {
+      color: #45ada8;
+      fill: #45ada8;
+      opacity: .6;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 }

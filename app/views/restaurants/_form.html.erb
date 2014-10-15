@@ -38,7 +38,13 @@
   <div class="center">
     <a class="submit" %>
       <div class="button raised primary">
-        <div class="center" fit>Create</div>
+        <div class="center" fit>
+          <% if @restaurant.new_record? %>
+            Create
+          <% else %>
+            Update
+          <% end %>
+        </div>
         <paper-ripple fit></paper-ripple>
       </div>
     </a>
@@ -50,7 +56,7 @@
 <script>
   (function() {
     $('.submit').on('click', function() {
-      submit_form('new_restaurant', 'restaurant', ['name', 'description', 'slogan', 'phone_number', 'email', 'address', 'twitter', 'instagram', 'facebook', 'website', 'delivery']);
+      submit_form($(this).parent().parent().attr('id'), 'restaurant', ['name', 'description', 'slogan', 'phone_number', 'email', 'address', 'twitter', 'instagram', 'facebook', 'website', 'delivery']);
     });
   })();
 </script>

@@ -28,12 +28,20 @@
   text-align: center;
 }
 
+core-toolbar a {
+  color: white;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 /* Menu */
 paper-menu-button::shadow .paper-menu-button-overlay-bg {
   background: #45ada8;
 }
 
-paper-item::shadow {
+core-toolbar paper-item::shadow {
   #label {
     color: white;
   }
@@ -45,7 +53,7 @@ paper-item::shadow {
   }
 }
 
-core-icon-button::shadow core-icon[icon="settings-power"] {
+core-toolbar core-icon-button::shadow core-icon[icon="settings-power"] {
   &:host:hover {
     color: white;
   }
