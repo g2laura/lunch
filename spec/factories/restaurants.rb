@@ -13,5 +13,6 @@ FactoryGirl.define do
     facebook "Facebook"
     website "Website"
     delivery false
+    image Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/rest1.jpg')))
   end
 end
