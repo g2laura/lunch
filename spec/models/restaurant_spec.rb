@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe Restaurant do
 
-  context 'scopes' do
+  describe 'scopes' do
     it 'orders restaurants by votes' do
       restaurant_with_5_votes = Restaurant.create
       5.times do
