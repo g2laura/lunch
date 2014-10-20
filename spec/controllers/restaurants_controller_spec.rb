@@ -41,6 +41,7 @@ RSpec.describe RestaurantsController, :type => :controller do
 
   describe "GET index" do
     it "assigns all restaurants as @restaurants" do
+      restaurant = Restaurant.create
       get :index, {}, valid_session
       expect(assigns(:restaurants)).to eq([restaurant])
     end
