@@ -3,6 +3,7 @@
     <section class="col-xs-3">
       <%= card_image_div(restaurant, current_user) %>
         <paper-ripple class="recenteringTouch" fit></paper-ripple>
+        <div id="users_<%= restaurant.id %>" class="show-users"></div>
       </div>
       <div class="row">
         <div class="manage-restaurant col-xs-6">
@@ -15,9 +16,11 @@
             <% end %>
           <% end %>
         </div>
-        <div class="vote-count col-xs-6" id="vote_<%= restaurant.id %>">
-          Votes: <%= restaurant.users.count %>
-        </div>
+        <a href="#" onclick="showUsers(<%= restaurant.id %>)">
+          <div class="vote-count col-xs-6" id="vote_<%= restaurant.id %>">
+            Votes: <%= restaurant.users.count %>
+          </div>
+        </a>
       </div>
     </section>
   <% end %>

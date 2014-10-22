@@ -20,3 +20,21 @@ window.vote = (restaurant) ->
       return;
 
   return;
+
+window.showUsers = (restaurant) ->
+
+  $.ajax
+    type: "GET"
+    url: "restaurants/" + restaurant + ".json"
+    success: (data) ->
+      users = $('#users_' + restaurant)
+      html = "<ul>"
+      $.each(data.users, (index, item) ->
+        html += ("<li>" + item.email + "</li>")
+      )
+      html += "</ul>"
+      users.html(html)
+      users.toggle()
+      return;
+
+  return;
