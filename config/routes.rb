@@ -8,7 +8,9 @@ Lunch::Application.routes.draw do
     get :vote, defaults: {format: :json}
   end
 
-  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }, path_prefix: 'session'
+
+  resources :users
 
   root 'restaurants#index'
 
