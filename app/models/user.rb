@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   belongs_to :restaurant
 
+  mount_uploader :avatar, ImageUploader
+
   def self.from_omniauth(auth)
     if user = User.find_by_email(auth.info.email)
       user.provider = auth.provider
