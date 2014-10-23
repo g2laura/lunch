@@ -13,7 +13,9 @@
     <core-toolbar>
       <% if user_signed_in? %>
         <paper-menu-button icon="menu">
-          <paper-item icon="settings" label="Settings"></paper-item>
+          <paper-item icon="settings" label="Settings">
+            <%= link_to '', edit_user_path(current_user) %>
+          </paper-item>
           <% if current_user.is_admin? %>
             <paper-item icon="account-child" label="Manage Users">
               <%= link_to '', users_path %>

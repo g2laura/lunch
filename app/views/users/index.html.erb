@@ -5,11 +5,9 @@
   <div class="row">
     <div class="col-xs-1">
       <div class="round">
-        <% if user.avatar? %>
-          <%= image_tag user.avatar.url(:avatar) if user.avatar? %>
-        <% else %>
-          <%= image_tag "http://placehold.it/70x70&text=#{user.name}" %>
-        <% end %>
+        <%= image_tag user.avatar.url(:avatar) if user.avatar? %>
+
+        <%= image_tag "http://placehold.it/70x70&text=#{user.name}" unless user.avatar? %>
       </div>
     </div>
     <div class="col-xs-5 middle">

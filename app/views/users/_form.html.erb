@@ -15,7 +15,7 @@
     <paper-input label="Password" type="password" layout vertical id="password"></paper-input>
   </core-field>
   <% if current_user.is_admin? %>
-    <paper-checkbox label="Admin" id="admin" value="<%= @user.admin %>"></paper-checkbox>
+    <paper-checkbox label="Admin" id="admin" checked="<%= @user.admin %>"></paper-checkbox>
   <% end %>
   <div>
     <a class="submit" %>
