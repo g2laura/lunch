@@ -2,6 +2,8 @@
 
   <%= hidden_fields(f, :name, :email, :password, :admin) %>
 
+  <%= image_tag @user.avatar.url(:thumb) if @user.avatar? %>
+
   <input type="file" class="filestyle file" data-buttonText="Avatar" data-buttonName="btn-primary" id="user_avatar" name="user[avatar]" value="<%= @user.avatar %>">
   <core-field>
     <paper-input label="Name" type="text" layout vertical id="name" required value="<%= @user.name %>"></paper-input>
@@ -12,8 +14,9 @@
   <core-field>
     <paper-input label="Password" type="password" layout vertical id="password"></paper-input>
   </core-field>
-  <paper-checkbox label="Admin" id="admin" value="<%= @user.admin %>"></paper-checkbox>
-
+  <% if current_user.is_admin? %>
+    <paper-checkbox label="Admin" id="admin" value="<%= @user.admin %>"></paper-checkbox>
+  <% end %>
   <div>
     <a class="submit" %>
       <div class="button raised primary">

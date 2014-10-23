@@ -1,3 +1,19 @@
 // Place all the styles related to the user controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.round {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 70px;
+  height: 70px;
+
+  img {
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
+
+.middle {
+  margin-top: 23px;
+}
