@@ -1,4 +1,4 @@
-<section class="login">
+<section class="login center">
   <h3>Sign in</h3>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "centered-panel" }) do |f| %>
     <%= hidden_fields(f, :email, :password) %>

@@ -1,6 +1,6 @@
 <%= devise_error_messages! %>
 
-<section class="login">
+<section class="login center">
   <h3>Resend unlock instructions</h3>
 
   <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { class: "centered-panel", method: :post }) do |f| %>
