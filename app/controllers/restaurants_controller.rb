@@ -37,7 +37,7 @@ class RestaurantsController < ApplicationController
 
   def vote
     @restaurant = Restaurant.find(params[:restaurant_id])
-    unless current_user.restaurant.id == @restaurant.id
+    unless current_user.restaurant == @restaurant
       current_user.update(restaurant: @restaurant)
     end
   end
