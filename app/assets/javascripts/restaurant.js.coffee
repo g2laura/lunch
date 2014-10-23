@@ -12,8 +12,8 @@ window.vote = (restaurant) ->
         type: "GET"
         url: "restaurants.json"
         success: (data) ->
-          $.each(data, (index, item) ->
-            $('#vote_' + item.id).text("Votes: " + item.users.length)
+          $.each(data, (index, restaurant) ->
+            $('#vote_' + restaurant.id).text("Votes: " + restaurant.users.length)
           )
           return;
 
@@ -28,12 +28,14 @@ window.showUsers = (restaurant) ->
     url: "restaurants/" + restaurant + ".json"
     success: (data) ->
       users = $('#users_' + restaurant)
-      html = "<ul>"
-      $.each(data.users, (index, item) ->
-        html += ("<li>" + item.email + "</li>")
+      html = "<div>"
+      $.each(data.users, (index, user) ->
+        html += "<div class=\"avatar\"><img style=\"max-width:50px;max-height:50px;\" src=\"" + user.avatar.url + "\" ></div>" if user.avatar.url
+        html += "<div class=\"avatar\"><img src=\"http://placehold.it/50x50&text=" + user.name + "\" ></div>" if not user.avatar.url
       )
-      html += "</ul>"
+      html += "</div>"
       users.html(html)
+      $('#restaurant_' + restaurant).toggleClass("hover-effect")
       users.toggle()
       return;
 

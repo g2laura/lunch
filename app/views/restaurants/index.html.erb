@@ -14,6 +14,8 @@
             <%= link_to restaurant, method: :delete, data: { confirm: 'Are you sure?' } do %>
               <paper-icon-button icon="delete"></paper-icon-button>
             <% end %>
+          <% else %>
+            &nbsp
           <% end %>
         </div>
         <a href="#" onclick="showUsers(<%= restaurant.id %>)">

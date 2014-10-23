@@ -34,17 +34,22 @@
 .show-users {
   display: none;
   position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: white;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, .5);
   z-index: 10;
+  right: 0;
+  z-index: 10;
+  overflow: scroll;
+  max-width: 100%;
+  max-height: 100%;
 
-  .round {
+  .avatar {
     border-radius: 50%;
     overflow: hidden;
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin: 5px;
 
     img {
       min-width: 100%;
