@@ -1,5 +1,6 @@
 class Restaurant < ActiveRecord::Base
   has_many :users
+  has_many :items
   acts_as_taggable_on :categories
 
   mount_uploader :image, ImageUploader

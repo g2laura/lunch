@@ -20,5 +20,5 @@
   <%= @item.image %>
 </p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<%= link_to 'Edit', edit_restaurant_item_path(@restaurant, @item) %> |
+<%= link_to 'Back', restaurant_items_path(@restaurant) %>

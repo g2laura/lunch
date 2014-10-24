@@ -35,6 +35,11 @@ class RestaurantsController < ApplicationController
     respond_with(@restaurant)
   end
 
+  def menu
+    @restaurants = Restaurant.all
+    respond_with(@restaurants)
+  end
+
   def vote
     @restaurant = Restaurant.find(params[:restaurant_id])
     unless current_user.restaurant == @restaurant

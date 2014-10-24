@@ -1,0 +1,12 @@
+<section>
+  <% @restaurants.each do |restaurant| %>
+    <div class="row">
+      <div class="col-xs-3">
+        <%= image_tag restaurant.image.url(:thumb) %>
+      </div>
+      <div class="col-xs-2">
+        <%= link_to restaurant.name + ' menu', restaurant_items_path(restaurant) %>
+      </div>
+    </div>
+  <% end %>
+</section>
