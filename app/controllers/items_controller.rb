@@ -22,17 +22,19 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
+    flash[:notice] = 'The menu item was successfully created.' if @item.save
+    flash[:error] = @item.errors.full_messages.join(", ")
     respond_with(@restaurant, @item)
   end
 
   def update
-    @item.update(item_params)
+    flash[:notice] = 'The menu item was successfully updated.' if @item.update(item_params)
+    flash[:error] = @item.errors.full_messages.join(", ")
     respond_with(@restaurant, @item)
   end
 
   def destroy
-    @item.destroy
+    flash[:notice] = 'The menu item was successfully destroyed.' if @item.destroy
     respond_with(@restaurant, @item)
   end
 

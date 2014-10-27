@@ -21,17 +21,19 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.save
+    flash[:notice] = 'The restaurant was successfully created.' if @restaurant.save
+    flash[:error] = @restaurant.errors.full_messages.join(", ")
     redirect_to action: 'index'
   end
 
   def update
-    @restaurant.update(restaurant_params)
+    flash[:notice] = 'The restaurant was successfully updated.' if @restaurant.update(restaurant_params)
+    flash[:error] = @restaurant.errors.full_messages.join(", ")
     respond_with(@restaurant)
   end
 
   def destroy
-    @restaurant.destroy
+    flash[:notice] = 'The restaurant was successfully destroyed.' if @restaurant.destroy
     respond_with(@restaurant)
   end
 
