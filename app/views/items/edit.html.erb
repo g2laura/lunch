@@ -1,6 +1,8 @@
-<h1>Editing item</h1>
+<section>
+  <h3>Editing item</h3>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%= link_to 'Show', @item %> |
-<%= link_to 'Back', :back %>
+  <%= link_to 'Show', restaurant_item_path(@restaurant, @item) %> |
+  <%= link_to 'Back', :back %>
+</section>

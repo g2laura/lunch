@@ -1,33 +1,43 @@
-<%= form_for(@item) do |f| %>
-  <% if @item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+<%= form_for [@restaurant, @item], :html => { :multipart => true } do |f| %>
 
-      <ul>
-      <% @item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= hidden_fields(f, :name, :description, :price) %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <%= image_tag @item.image.url(:thumb) if @item.image? %>
+
+  <input type="file" class="filestyle file" data-buttonText="Image" data-buttonName="btn-primary" id="item_image" name="item[image]" value="<%= @item.image %>">
+
+  <core-field>
+    <paper-input label="Name" type="text" layout vertical id="name" required value="<%= @item.name %>"></paper-input>
+  </core-field>
+  <core-field>
+    <paper-input multiline label="Description" layout vertical id="description" value="<%= @item.description %>"></paper-input>
+  </core-field>
+  <core-field>
+    <paper-input label="Price" type="text" error="Please insert a price" layout vertical id="price" value="<%= @item.price %>" required></paper-input>
+  </core-field>
+  <div>
+    <a class="submit" %>
+      <div class="button raised primary">
+        <div class="center" fit>
+          <% if @item.new_record? %>
+            Create
+          <% else %>
+            Update
+          <% end %>
+        </div>
+        <paper-ripple fit></paper-ripple>
+      </div>
+    </a>
   </div>
 <% end %>
+
+<%= render "shared/submit_form" %>
+
+<script>
+  (function() {
+
+    $('.submit').on('click', function() {
+      submit_form($(this).parent().parent().attr('id'), 'item', ['name', 'description', 'price']);
+    });
+  })();
+</script>

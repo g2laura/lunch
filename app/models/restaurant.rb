@@ -5,6 +5,8 @@ class Restaurant < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
+  validates :name, :phone_number, presence: true
+
   scope :ordered_by_votes, -> {
     find_by_sql("SELECT restaurants.*, COUNT(users.id) AS votes FROM users, restaurants WHERE users.restaurant_id = restaurants.id OR users.restaurant_id IS NULL GROUP BY restaurants.id ORDER BY votes DESC")
   }

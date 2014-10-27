@@ -9,10 +9,10 @@
     <paper-input label="Name" type="text" layout vertical id="name" required value="<%= @user.name %>"></paper-input>
   </core-field>
   <core-field>
-    <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email" value="<%= @user.email %>"></paper-input>
+    <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email" required value="<%= @user.email %>"></paper-input>
   </core-field>
   <core-field>
-    <paper-input label="Password" type="password" layout vertical id="password"></paper-input>
+    <paper-input label="Password" type="password" layout required vertical id="password"></paper-input>
   </core-field>
   <% if current_user.is_admin? %>
     <paper-checkbox label="Admin" id="admin" checked="<%= @user.admin %>"></paper-checkbox>

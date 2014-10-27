@@ -1,4 +1,4 @@
-<h1>Listing items</h1>
+<h3>Listing items</h3>
 
 <table>
   <thead>
@@ -18,11 +18,11 @@
       <tr>
         <td><%= item.name %></td>
         <td><%= item.description %></td>
-        <td><%= item.price %></td>
+        <td><%= number_to_currency(item.price) %></td>
         <td><%= item.image %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', restaurant_item_path(@restaurant, item) %></td>
+        <td><%= link_to 'Edit', edit_restaurant_item_path(@restaurant, item) %></td>
+        <td><%= link_to 'Destroy', restaurant_item_path(@restaurant, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

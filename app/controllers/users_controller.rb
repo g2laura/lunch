@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     flash[:notice] = 'The user was successfully created.' if @user.save
-    flash[:error] = @user.errors.full_messages.join(", ")
+    flash[:error] = @user.errors.full_messages.join(", ") unless @user.errors.full_messages.blank?
     redirect_to action: 'index'
   end
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       params[:user].delete(:password_confirmation)
     end
     flash[:notice] = 'The user was successfully updated.' if @user.update(user_params)
-    flash[:error] = @user.errors.full_messages.join(", ")
+    flash[:error] = @user.errors.full_messages.join(", ") unless @user.errors.full_messages.blank?
     redirect_to action: 'index'
   end
 

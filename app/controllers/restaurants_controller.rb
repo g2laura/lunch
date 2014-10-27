@@ -22,13 +22,13 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     flash[:notice] = 'The restaurant was successfully created.' if @restaurant.save
-    flash[:error] = @restaurant.errors.full_messages.join(", ")
+    flash[:error] = @restaurant.errors.full_messages.join(", ") unless @restaurant.errors.full_messages.blank?
     redirect_to action: 'index'
   end
 
   def update
     flash[:notice] = 'The restaurant was successfully updated.' if @restaurant.update(restaurant_params)
-    flash[:error] = @restaurant.errors.full_messages.join(", ")
+    flash[:error] = @restaurant.errors.full_messages.join(", ") unless @restaurant.errors.full_messages.blank?
     respond_with(@restaurant)
   end
 

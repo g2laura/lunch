@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, ImageUploader
 
+  validates :name, :email, :password, presence: true
+
   def self.from_omniauth(auth)
     if user = User.find_by_email(auth.info.email)
       user.provider = auth.provider
