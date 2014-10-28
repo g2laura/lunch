@@ -4,7 +4,11 @@
     var form = document.getElementById(id);
 
     $.each(params, function(index, param) {
-      $('#' + resource + '_' + param).val($('#' + param).val());
+      var param_obj = $('#' + param);
+      if(param_obj.prop("tagName") == "PAPER-CHECKBOX") {
+        param_obj.val(param_obj.attr("aria-checked"));
+      }
+      $('#' + resource + '_' + param).val(param_obj.val());
     });
     form.submit();
   };
