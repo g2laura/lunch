@@ -29,7 +29,7 @@ RSpec.describe RestaurantsController, :type => :controller do
   # Restaurant. As you add validations to Restaurant, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { name: "Slabon", description: "best burgers ever!"}
+    { name: "Slabon", description: "best burgers ever!", phone_number: "5555555"}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -41,7 +41,7 @@ RSpec.describe RestaurantsController, :type => :controller do
 
   describe "GET index" do
     it "assigns all restaurants as @restaurants" do
-      restaurant = Restaurant.create
+      restaurant = Restaurant.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:restaurants)).to eq([restaurant])
     end
@@ -130,6 +130,7 @@ RSpec.describe RestaurantsController, :type => :controller do
 
   describe "Vote for a restaurant" do
     it "adds a restaurant to the current user" do
+      user.update(restaurant: nil)
       get :vote, {restaurant_id: restaurant.to_param, format: :json}, valid_session
       expect(restaurant.users.first).to eq(user)
     end

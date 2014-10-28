@@ -74,10 +74,10 @@ RSpec.describe UsersController, :type => :controller do
 
   describe "POST create" do
     describe "with valid params" do
+      subject { post :create, {:user => valid_attributes}, valid_session }
+
       it "creates a new User" do
-        expect {
-          post :create, {:user => valid_attributes}, valid_session
-        }.to change(User, :count).by(1)
+        expect { subject }.to change(User, :count).by(1)
       end
 
       it "assigns a newly created user as @user" do
@@ -86,15 +86,19 @@ RSpec.describe UsersController, :type => :controller do
         expect(assigns(:user)).to be_persisted
       end
 
+      it "flashes a success message" do
+        expect(subject.request.flash[:success]).to_not be_nil
+      end
+
       it "redirects to the created user" do
-        post :create, {:user => valid_attributes}, valid_session
-        expect(response).to redirect_to(:users)
+        expect(subject).to redirect_to(:users)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved user as @user" do
         post :create, {:user => invalid_attributes}, valid_session
+        expect(subject.request.flash[:error]).to_not be_nil
         expect(assigns(:user)).to be_a_new(User)
       end
     end

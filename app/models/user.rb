@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, ImageUploader
 
-  validates :name, :email, :password, presence: true
+  validates :name, :email, presence: true
 
   def self.from_omniauth(auth)
     if user = User.find_by_email(auth.info.email)
