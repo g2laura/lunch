@@ -21,9 +21,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    flash[:notice] = 'The user was successfully created.' if @user.save
+    flash[:success] = 'The user was successfully created.' if @user.save
     flash[:error] = @user.errors.full_messages.join(", ") unless @user.errors.full_messages.blank?
-    redirect_to action: 'index'
+    respond_with(@user, location: users_url)
   end
 
   def update
@@ -31,13 +31,17 @@ class UsersController < ApplicationController
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
-    flash[:notice] = 'The user was successfully updated.' if @user.update(user_params)
+    flash[:success] = 'The user was successfully updated.' if @user.update(user_params)
     flash[:error] = @user.errors.full_messages.join(", ") unless @user.errors.full_messages.blank?
-    redirect_to action: 'index'
+    if current_user == @user
+      respond_with(@user, location: edit_user_url(@user))
+    else
+      respond_with(@user, location: users_url)
+    end
   end
 
   def destroy
-    flash[:notice] = 'The user was successfully destroyed.' if @user.destroy
+    flash[:success] = 'The user was successfully destroyed.' if @user.destroy
     respond_with(@user)
   end
 
