@@ -66,4 +66,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-html-matchers'
   gem 'guard-rspec'
+  gem 'mocha'
 end

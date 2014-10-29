@@ -26,6 +26,11 @@ RSpec.describe ItemsController, :type => :controller do
     @user = FactoryGirl.create :user
     @restaurant = FactoryGirl.create :restaurant
     sign_in @user
+
+    @ability = Object.new
+    @ability.extend(CanCan::Ability)
+    @controller.stubs(:current_ability).returns(@ability)
+    @ability.can :manage, Item
   end
 
   # This should return the minimal set of attributes required to create a valid

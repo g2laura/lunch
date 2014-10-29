@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_restaurant
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
+  load_and_authorize_resource except: [:create]
 
   def index
     @items = Item.all

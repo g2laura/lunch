@@ -23,7 +23,14 @@ RSpec.describe UsersController, :type => :controller do
   include Devise::TestHelpers
 
   let(:user)    { FactoryGirl.create :user }
-  before(:each) { sign_in user }
+  before(:each) {
+    sign_in user
+
+    @ability = Object.new
+    @ability.extend(CanCan::Ability)
+    @controller.stubs(:current_ability).returns(@ability)
+    @ability.can :manage, User
+  }
 
   # This should return the minimal set of attributes required to create a valid
   # User. As you add validations to User, be sure to
