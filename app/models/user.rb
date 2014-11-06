@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :trackable, :validatable, :omniauth_providers => [:google_oauth2]
 
   belongs_to :restaurant
+  has_many :orders
+  has_many :items, through: :orders
 
   mount_uploader :avatar, ImageUploader
 

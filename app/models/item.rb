@@ -1,5 +1,7 @@
 class Item < ActiveRecord::Base
   belongs_to :restaurant
+  has_many :orders
+  has_many :users, through: :orders
   acts_as_taggable_on :categories
 
   mount_uploader :image, ImageUploader

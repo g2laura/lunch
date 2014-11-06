@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_restaurant
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant
   respond_to :html, :json
   load_and_authorize_resource except: [:create]
 
@@ -23,12 +23,14 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.restaurant = @restaurant
     flash[:success] = 'The menu item was successfully created.' if @item.save
     flash[:error] = @item.errors.full_messages.join(", ") unless @item.errors.full_messages.blank?
     respond_with(@restaurant, @item)
   end
 
   def update
+    @item.restaurant = @restaurant
     flash[:success] = 'The menu item was successfully updated.' if @item.update(item_params)
     flash[:error] = @item.errors.full_messages.join(", ") unless @item.errors.full_messages.blank?
     respond_with(@restaurant, @item)

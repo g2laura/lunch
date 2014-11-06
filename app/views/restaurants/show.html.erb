@@ -1,59 +1,32 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
+<section>
+  <article class="row">
+    <p> Winner: <%= @restaurant.name %> </p>
+  </article>
 
-<p>
-  <strong>Description:</strong>
-  <%= @restaurant.description %>
-</p>
+  <article class="row">
+    <p> Your Lunch </p>
+    <div id="lunch_items">
+      <% Order.lunch_orders(@restaurant, current_user).each do |order| %>
+        <%= order.item.name %>
+      <% end %>
+    </div>
+  </article>
 
-<p>
-  <strong>Slogan:</strong>
-  <%= @restaurant.slogan %>
-</p>
+  <article class="row">
+    <h3> Choose your Lunch </h3>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @restaurant.phone_number %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @restaurant.email %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @restaurant.address %>
-</p>
-
-<p>
-  <strong>Twitter:</strong>
-  <%= @restaurant.twitter %>
-</p>
-
-<p>
-  <strong>Instagram:</strong>
-  <%= @restaurant.instagram %>
-</p>
-
-<p>
-  <strong>Facebook:</strong>
-  <%= @restaurant.facebook %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @restaurant.website %>
-</p>
-
-<p>
-  <strong>Delivery:</strong>
-  <%= @restaurant.delivery %>
-</p>
-
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+    <% @restaurant.items.each do |item| %>
+      <div class="col-xs-3">
+        <div class="polaroid" id="item_<%= item.id %>">
+          <p>
+            <%= item.name %>
+            <span><%= number_to_currency(item.price) %></span>
+          </p>
+          <%= image_tag image_url(item) %>
+          <div class="description"><%= item.description %></div>
+        </div>
+      </div>
+    <% end %>
+  </article>
+</section>
