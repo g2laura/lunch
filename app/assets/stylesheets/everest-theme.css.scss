@@ -918,3 +918,68 @@ section > * {
 
 .animated .hover-effect {
   z-index: 0; }
+
+/* Polaroid */
+
+.polaroid {
+  position: relative;
+  width: auto;
+  cursor: pointer;
+
+  &:hover .description {
+    opacity: 1;
+    -moz-transition: opacity 0.4s ease-out;
+    -o-transition: opacity 0.4s ease-out;
+    -webkit-transition: opacity 0.4s ease-out;
+    -ms-transition: opacity 0.4s ease-out;
+    transition: opacity 0.4s ease-out;
+  }
+
+  .description {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 200px;
+    margin: 10px;
+    background-color: #45ada8;
+    color: white;
+    padding: 15px;
+    font-style: italic;
+    font-size: 16px;
+    opacity: 0;
+  }
+}
+
+.polaroid img {
+  border: 10px solid #fff;
+  border-bottom: 45px solid #fff;
+  -webkit-box-shadow: 3px 3px 3px #aaa;
+     -moz-box-shadow: 3px 3px 3px #aaa;
+          box-shadow: 3px 3px 3px #aaa;
+
+  &.selected {
+    border: 10px solid #45ada8;
+    border-bottom: 45px solid #fff;
+  }
+}
+
+.polaroid p {
+  position: absolute;
+  text-align: left;
+  padding-left: 10px;
+  width: 100%;
+  bottom: 0px;
+  font-size: 400 18px/1;
+  color: #888;
+  padding-right: 110px;
+
+  span {
+    position: absolute;
+    right: 10px;
+    font-size: 26px;
+    top: -11px;
+    color: #45ada8;
+    font-style: italic;
+    font-weight: bold;
+  }
+}
