@@ -5,6 +5,5 @@ FactoryGirl.define do
     user nil
     item nil
     restaurant nil
-    price "9.99"
   end
 end
