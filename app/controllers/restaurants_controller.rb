@@ -9,6 +9,8 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    @items_by_user = Order.lunch_by_user(@restaurant, current_user)
+    @total = Item.total_by_user(@restaurant, current_user)
     respond_with(@restaurant)
   end
 

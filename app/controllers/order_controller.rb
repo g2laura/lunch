@@ -3,15 +3,30 @@ class OrderController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    @order = Order.new(restaurant: @restaurant, item: @item, user: current_user)
+    @message = ""
 
-    if @order.save
-      flash[:success] = 'The order was successfully created.'
-      render json: @order
+    if(Item.is_within_budget?(@restaurant, current_user, @item))
+      @order = Order.find_or_create_by(restaurant: @restaurant, item: @item, user: current_user)
     else
-      flash[:error] = 'The order wasn\'t created.'
-      render json: @order
+      @message = Item.within_budget_message(@restaurant, current_user, @item)
     end
+    @orders = Order.lunch_by_user(@restaurant, current_user)
+    render json: {
+      "order" => @order.as_json(include: [:restaurant, :item, :user]),
+      "orders" => @orders.as_json(include: [:restaurant, :item, :user]),
+      "total" => Item.total_by_user(@restaurant, current_user),
+      "message" => @message
+    }
+  end
+
+  def destroy
+    @item = Item.find(params[:item_id])
+    @order = Order.find_by(restaurant: @restaurant, item: @item, user: current_user).destroy
+    @orders = Order.lunch_by_user(@restaurant, current_user)
+    render json: {
+      "orders" => @orders.as_json(include: [:restaurant, :item, :user]),
+      "total" => Item.total_by_user(@restaurant, current_user)
+    }
   end
 
   def user_orders

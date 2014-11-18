@@ -7,9 +7,15 @@
   <article class="row">
     <p> Your Lunch </p>
     <div id="lunch_items">
-      <% Order.lunch_orders(@restaurant, current_user).each do |order| %>
-        <%= order.item.name %>
-      <% end %>
+      <ul>
+        <% @items_by_user.each do |order| %>
+          <li id="item_<%= order.item.id %>">
+            <%= order.item.name %> <%= number_to_currency(order.item.price) %>
+            <a href="#" onclick="removeOrder(<%= @restaurant.id %>, <%= order.item.id %>)">x</a>
+          </li>
+        <% end %>
+        <li>Total: <%= number_to_currency(@total) %></li>
+      </ul>
     </div>
   </article>
 
@@ -17,16 +23,19 @@
     <h3> Choose your Lunch </h3>
 
     <% @restaurant.items.each do |item| %>
-      <div class="col-xs-3">
-        <div class="polaroid" id="item_<%= item.id %>">
-          <p>
-            <%= item.name %>
-            <span><%= number_to_currency(item.price) %></span>
-          </p>
-          <%= image_tag image_url(item) %>
-          <div class="description"><%= item.description %></div>
-        </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <a href="#" onclick="order(<%= @restaurant.id %>, <%= item.id %>)">
+          <div class="polaroid" id="item_<%= item.id %>">
+            <p>
+              <%= item.name %>
+              <span><%= number_to_currency(item.price) %></span>
+            </p>
+            <%= image_tag image_url(item) %>
+            <div class="description"><%= item.description %></div>
+          </div>
+        </a>
       </div>
     <% end %>
   </article>
 </section>
+<paper-toast class="toast" text="" onclick="discardDraft(this);"></paper-toast>

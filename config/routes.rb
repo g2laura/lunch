@@ -4,6 +4,8 @@ Lunch::Application.routes.draw do
 
   post 'order/:restaurant_id/:item_id', as: 'order', to: 'order#create', defaults: { format: :json }
 
+  delete 'order/:restaurant_id/:item_id', as: 'remove_order', to: 'order#destroy', defaults: { format: :json }
+
   get 'order/user_orders', as: 'user_orders', to: 'order#user_orders', defaults: { format: :json }
 
   resources :restaurants do
