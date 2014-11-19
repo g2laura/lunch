@@ -12,7 +12,7 @@ RSpec.describe OrderController, :type => :controller do
     sign_in user
   }
 
-  describe "GET new" do
+  describe "GET create" do
     it "returns http success" do
       post :create, { restaurant_id: restaurant.id, item_id: item.id}
       expect(response).to have_http_status(:success)

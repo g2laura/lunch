@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :item do
     name "MyString"
     description "MyText"
-    price "9.99"
+    price "8"
     image "MyString"
   end
 end

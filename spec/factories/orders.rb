@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :order do
-    user nil
-    item nil
-    restaurant nil
+    user
+    item
+    restaurant
   end
 end
