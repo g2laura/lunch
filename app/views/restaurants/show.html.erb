@@ -14,7 +14,7 @@
             <a href="#" onclick="removeOrder(<%= @restaurant.id %>, <%= order.item.id %>)">x</a>
           </li>
         <% end %>
-        <li>Total: <%= number_to_currency(@total) %></li>
+        <li>Total + 7%: <%= number_to_currency(@total + (@total * 0.07)) %></li>
       </ul>
     </div>
   </article>
@@ -39,3 +39,7 @@
   </article>
 </section>
 <paper-toast class="toast" text="" onclick="discardDraft(this);"></paper-toast>
+
+<% if current_user.is_admin? %>
+  <%= link_to "Export Lunch list", lunch_path(@restaurant) %>
+<% end %>

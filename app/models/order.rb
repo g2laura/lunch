@@ -5,4 +5,5 @@ class Order < ActiveRecord::Base
 
   scope :lunch_by_user, ->(restaurant, user) { where restaurant: restaurant, user: user }
 
+  scope :lunch_by_restaurant, ->(restaurant) { where restaurant: restaurant }
 end

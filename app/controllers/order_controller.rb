@@ -34,6 +34,17 @@ class OrderController < ApplicationController
     render json: @orders
   end
 
+  def restaurant_orders
+    @orders = Order.lunch_by_restaurant(@restaurant)
+    @total = Item.total_by_restaurant(@restaurant)
+    respond_to do |format|
+      format.pdf do
+        pdf = LunchPdf.new(@orders, @total)
+        send_data pdf.render, filename: 'lunch.pdf', type: 'application/pdf'
+      end
+    end
+  end
+
   private
     def set_restaurant
       @restaurant = Restaurant.find(params[:restaurant_id])

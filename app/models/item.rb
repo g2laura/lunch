@@ -11,6 +11,8 @@ class Item < ActiveRecord::Base
 
   scope :total_by_user, ->(restaurant, user) { joins(:orders).where("orders.restaurant_id = ? AND orders.user_id = ?", restaurant.id, user.id).sum(:price) }
 
+  scope :total_by_restaurant, ->(restaurant) { joins(:orders).where("orders.restaurant_id = ? ", restaurant.id).sum(:price) }
+
   def self.is_within_budget?(restaurant, user, item)
     total = self.total_by_user(restaurant, user) + item.price
     if (total < 7.70) || total.between?(7.69, 9.00)

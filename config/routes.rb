@@ -8,6 +8,8 @@ Lunch::Application.routes.draw do
 
   get 'order/user_orders', as: 'user_orders', to: 'order#user_orders', defaults: { format: :json }
 
+  get 'order/restaurant_orders/:restaurant_id', as: 'lunch', to: 'order#restaurant_orders', defaults: { format: :pdf }
+
   resources :restaurants do
     get :vote, defaults: { format: :json }
     resources :items
