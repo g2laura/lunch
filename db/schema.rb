@@ -11,20 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113184322) do
+ActiveRecord::Schema.define(version: 20141120204758) do
 
   create_table "items", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.decimal  "price",         precision: 8, scale: 2
     t.string   "image"
-    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "restaurant_id"
   end
 
-  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
   add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id", using: :btree
 
   create_table "menus", force: true do |t|
@@ -105,6 +103,7 @@ ActiveRecord::Schema.define(version: 20141113184322) do
     t.boolean  "admin",                  default: false
     t.integer  "restaurant_id"
     t.string   "name"
+    t.string   "office"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

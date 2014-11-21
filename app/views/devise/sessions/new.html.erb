@@ -13,6 +13,11 @@
       <paper-input label="Password" type="password" layout vertical id="password"></paper-input>
     </core-field>
 
+    <core-field>
+      <core-icon icon="store"></core-icon>
+      <%= f.select(:office, options_for_select([['El Dorado', User::DORADO], ['Clayton', User::CLAYTON]])) %>
+    </core-field>
+
     <div class="center buttons">
       <a class="submit" %>
         <div class="button raised primary">
@@ -22,6 +27,7 @@
       </a>
       <%= render "devise/shared/links" %>
     </div>
+
   <% end %>
 </section>
 

@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
 
   validates :name, :email, presence: true
 
+  DORADO = 'dorado'
+  CLAYTON = 'clayton'
+
   def self.from_omniauth(auth)
     if user = User.find_by_email(auth.info.email)
       user.provider = auth.provider

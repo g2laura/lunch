@@ -15,7 +15,7 @@ Lunch::Application.routes.draw do
     resources :items
   end
 
-  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }, path_prefix: 'session'
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks", sessions: 'users/sessions' }, path_prefix: 'session'
 
   resources :users
 
