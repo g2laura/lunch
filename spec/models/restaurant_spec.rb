@@ -18,7 +18,7 @@ RSpec.describe Restaurant do
         user.save
       end
 
-      expect(Restaurant.ordered_by_votes).to eq([restaurant_with_10_votes, restaurant_with_5_votes])
+      expect(Restaurant.ordered_by_votes_and_office(User::DORADO)).to eq([restaurant_with_10_votes, restaurant_with_5_votes])
     end
   end
 end

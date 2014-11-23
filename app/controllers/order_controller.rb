@@ -35,8 +35,8 @@ class OrderController < ApplicationController
   end
 
   def restaurant_orders
-    @orders = Order.lunch_by_restaurant(@restaurant)
-    @total = Item.total_by_restaurant(@restaurant)
+    @orders = Order.lunch_by_restaurant_and_office(@restaurant, current_user.office)
+    @total = Item.total_by_restaurant_and_office(@restaurant, current_user.office)
     respond_to do |format|
       format.pdf do
         pdf = LunchPdf.new(@orders, @total)

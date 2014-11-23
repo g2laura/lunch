@@ -22,7 +22,6 @@ window.vote = (restaurant) ->
   return;
 
 window.showUsers = (restaurant) ->
-
   $.ajax
     type: "GET"
     url: "restaurants/" + restaurant + ".json"

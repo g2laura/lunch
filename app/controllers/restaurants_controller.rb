@@ -4,14 +4,16 @@ class RestaurantsController < ApplicationController
   load_and_authorize_resource except: [:create]
 
   def index
-    @restaurants = Restaurant.ordered_by_votes
-    respond_with(@restaurants)
+    @restaurants = Restaurant.ordered_by_votes_and_office(current_user.office)
+    @votes = Restaurant.votes_by_office(current_user.office)
+    respond_with(@restaurants, "votes" => @votes)
   end
 
   def show
     @items_by_user = Order.lunch_by_user(@restaurant, current_user)
     @total = Item.total_by_user(@restaurant, current_user)
-    respond_with(@restaurant)
+    @votes = Restaurant.votes_by_restaurant_and_office(@restaurant, current_user.office)
+    respond_with(@restaurant, "votes" => @votes)
   end
 
   def new

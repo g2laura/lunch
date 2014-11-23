@@ -6,4 +6,7 @@ class Order < ActiveRecord::Base
   scope :lunch_by_user, ->(restaurant, user) { where restaurant: restaurant, user: user }
 
   scope :lunch_by_restaurant, ->(restaurant) { where restaurant: restaurant }
+
+  scope :lunch_by_restaurant_and_office, ->(restaurant, office) { joins(:users).where("orders.restaurant_id = ? AND users.office = ?", restaurant.id, office) }
+
 end

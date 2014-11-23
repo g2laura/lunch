@@ -18,11 +18,13 @@ ActiveRecord::Schema.define(version: 20141120204758) do
     t.text     "description"
     t.decimal  "price",         precision: 8, scale: 2
     t.string   "image"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "restaurant_id"
   end
 
+  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
   add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id", using: :btree
 
   create_table "menus", force: true do |t|
