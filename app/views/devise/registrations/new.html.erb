@@ -4,10 +4,15 @@
   <h3>Sign up</h3>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "centered-panel" }) do |f| %>
 
-    <%= hidden_fields(f, :email, :password, :password_confirmation) %>
+    <%= hidden_fields(f, :name, :email, :password, :password_confirmation) %>
 
     <core-field>
       <core-icon icon="account-circle"></core-icon>
+      <paper-input label="Name" type="text" error="Please insert a name" layout vertical id="name"></paper-input>
+    </core-field>
+
+    <core-field>
+      <core-icon icon="mail"></core-icon>
       <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email"></paper-input>
     </core-field>
 
@@ -38,7 +43,7 @@
 <script>
   (function() {
     $('.submit').on('click', function() {
-      submit_form('new_user', 'user', ['email', 'password', 'password_confirmation']);
+      submit_form('new_user', 'user', ['name', 'email', 'password', 'password_confirmation']);
     });
   })();
 </script>
