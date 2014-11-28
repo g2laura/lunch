@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
-  load_and_authorize_resource except: [:create]
+  load_and_authorize_resource except: [:create, :vote]
 
   def index
     @restaurants = Restaurant.ordered_by_votes_and_office(current_user.office)

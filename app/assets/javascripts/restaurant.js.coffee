@@ -18,7 +18,7 @@ window.vote = (restaurant) ->
           return;
 
       return;
-
+  $.ajaxStop
   return;
 
 window.showUsers = (restaurant) ->
@@ -37,7 +37,7 @@ window.showUsers = (restaurant) ->
       $('#restaurant_' + restaurant).toggleClass("hover-effect")
       users.toggle()
       return;
-
+  $.ajaxStop
   return;
 
 update_items = (data, restaurant) ->
@@ -64,6 +64,7 @@ window.order = (restaurant, item) ->
         $('.toast').attr('text', data.message)
       document.querySelector('.toast').show()
       return;
+  $.ajaxStop
   return;
 
 window.removeOrder = (restaurant, item) ->
@@ -76,4 +77,5 @@ window.removeOrder = (restaurant, item) ->
       $('.toast').attr('text', 'Order succesfully removed')
       document.querySelector('.toast').show()
       return;
+  $.ajaxStop
   return;

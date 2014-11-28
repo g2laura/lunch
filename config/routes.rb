@@ -1,4 +1,7 @@
+
 Lunch::Application.routes.draw do
+
+  mount Resque::Server.new, at: "/resque"
 
   get :menu, to: 'restaurants#menu'
 

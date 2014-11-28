@@ -60,6 +60,13 @@ gem 'prawn'
 
 gem 'prawn-table'
 
+# Redis-backed Ruby library for creating background jobs
+gem 'resque', :require => 'resque/server'
+
+gem 'resque_mailer'
+
+gem 'resque-scheduler'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
