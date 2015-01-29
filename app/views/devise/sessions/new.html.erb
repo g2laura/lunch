@@ -1,42 +1,17 @@
-<section class="login center">
-  <h3>Sign in</h3>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "centered-panel" }) do |f| %>
-    <%= hidden_fields(f, :email, :password) %>
+<h2>Sign in</h2>
 
-    <core-field>
-      <core-icon icon="account-circle"></core-icon>
-      <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email"></paper-input>
-    </core-field>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %></div>
 
-    <core-field>
-      <core-icon icon="lock"></core-icon>
-      <paper-input label="Password" type="password" layout vertical id="password"></paper-input>
-    </core-field>
+  <div><%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %></div>
 
-    <core-field>
-      <core-icon icon="store"></core-icon>
-      <%= f.select(:office, options_for_select([['El Dorado', User::DORADO], ['Clayton', User::CLAYTON]])) %>
-    </core-field>
+  <% if devise_mapping.rememberable? -%>
+    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+  <% end -%>
 
-    <div class="center buttons">
-      <a class="submit" %>
-        <div class="button raised primary">
-          <div class="center" fit>Log in</div>
-          <paper-ripple fit></paper-ripple>
-        </div>
-      </a>
-      <%= render "devise/shared/links" %>
-    </div>
+  <div><%= f.submit "Sign in" %></div>
+<% end %>
 
-  <% end %>
-</section>
-
-<%= render "shared/submit_form" %>
-
-<script>
-  (function() {
-    $('.submit').on('click', function() {
-      submit_form('new_user', 'user', ['email', 'password']);
-    });
-  })();
-</script>
+<%= render "devise/shared/links" %>
