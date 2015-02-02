@@ -2,14 +2,29 @@
 <html>
 <head>
   <title>Lunch</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= html_import_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
 
-<%= yield %>
+</head>
+<body unresolved touch-action="auto">
+<app-bar></app-bar>
+
+
+        <% if user_signed_in? %>
+          <%= image_tag current_user.avatar.url(:avatar) if current_user.avatar %>
+          <%= link_to "Choose wisely!", root_path %>
+        <% else %>
+          <%= link_to "Lunch", root_path %>
+        <% end %>
+      </div>
+
+
+    <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>">
+        <%= value %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+
 
 </body>
 </html>
