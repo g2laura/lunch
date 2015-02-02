@@ -1,12 +1,30 @@
 <div class="row">
   <% @restaurants.each do |restaurant| %>
-    <section class="col-md-4">
-      <div class="card image" style="background-image: url(<%= restaurant.image.url(:thumb).to_s %>);" onclick="vote(<%= restaurant.id %>, '<%= restaurant.name %>' );">
-        <paper-ripple class="recenteringTouch" fit></paper-ripple>
+    <section class="col-xs-3">
+      <%= card_image_div(restaurant, current_user) %>
+        <div id="users_<%= restaurant.id %>" class="show-users"></div>
+      </div>
+
+
+      <div class="row">
+        <div class="manage-restaurant col-xs-6">
+          <% if current_user.is_admin? %>
+            <%= link_to edit_restaurant_path(restaurant) do %>
+              
+            <% end %>
+            <%= link_to restaurant, method: :delete, data: { confirm: 'Are you sure?' } do %>
+             
+            <% end %>
+          <% else %>
+            &nbsp
+          <% end %>
+        </div>
+        <a href="#" onclick="showUsers(<%= restaurant.id %>)">
+          <div class="vote-count col-xs-6" id="vote_<%= restaurant.id %>">
+            Votes: <%= restaurant.users.count %>
+          </div>
+        </a>
       </div>
     </section>
   <% end %>
 </div>
-<paper-toast class="toast" text="" onclick="discardDraft(this);"></paper-toast>
-<%= link_to 'New Restaurant', new_restaurant_path %>
-

@@ -1,65 +1,35 @@
 <%= form_for @restaurant, :html => { :multipart => true } do |f| %>
-  <% if @restaurant.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
 
-      <ul>
-      <% @restaurant.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= hidden_fields(f, :name, :description, :slogan, :phone_number, :email, :address, :twitter, :instagram, :facebook, :website, :delivery) %>
 
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :slogan %><br>
-    <%= f.text_field :slogan %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
-  </div>
-  <div class="field">
-    <%= f.label :twitter %><br>
-    <%= f.text_field :twitter %>
-  </div>
-  <div class="field">
-    <%= f.label :instagram %><br>
-    <%= f.text_field :instagram %>
-  </div>
-  <div class="field">
-    <%= f.label :facebook %><br>
-    <%= f.text_field :facebook %>
-  </div>
-  <div class="field">
-    <%= f.label :website %><br>
-    <%= f.text_field :website %>
-  </div>
-  <div class="field">
-    <%= f.label :delivery %><br>
-    <%= f.check_box :delivery %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <%= image_tag @restaurant.image.url(:thumb) if @restaurant.image? %>
+
+  <input type="file" class="filestyle file" data-buttonText="Image" data-buttonName="btn-primary" id="restaurant_image" name="restaurant[image]" value="<%= @restaurant.image %>">
+  
+
+  <div>
+    <a class="submit" %>
+      <div class="button raised primary">
+        <div class="center" fit>
+          <% if @restaurant.new_record? %>
+            Create
+          <% else %>
+            Update
+          <% end %>
+        </div>
+        
+      </div>
+    </a>
   </div>
 <% end %>
+
+<%= render "shared/submit_form" %>
+
+<script>
+  (function() {
+
+    $('.submit').on('click', function() {
+      submit_form($(this).parent().parent().attr('id'), 'restaurant', ['name', 'description', 'slogan', 'phone_number', 'email', 'address', 'twitter', 'instagram', 'facebook', 'website', 'delivery']);
+    });
+  })();
+</script>
