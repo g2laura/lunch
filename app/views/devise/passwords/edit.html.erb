@@ -1,16 +1,40 @@
-<h2>Change your password</h2>
+<%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+<section class="login center">
+  <h3>Change your password</h3>
 
-  <div><%= f.label :password, "New password" %><br />
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %></div>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: "centered-panel", method: :put }) do |f| %>
 
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+    <%= hidden_fields(f, :reset_password_token, :password, :password_confirmation) %>
 
-  <div><%= f.submit "Change my password" %></div>
-<% end %>
+    <core-field>
+      <core-icon icon="lock"></core-icon>
+      <paper-input label="New password" type="password" layout vertical id="password"></paper-input>
+    </core-field>
 
-<%= render "devise/shared/links" %>
+    <core-field>
+      <core-icon icon="lock"></core-icon>
+      <paper-input label="Confirm new password" type="password" layout vertical id="password_confirmation"></paper-input>
+    </core-field>
+
+    <div class="center buttons">
+      <a class="submit" %>
+        <div class="button raised primary">
+          <div class="center" fit>Change my password</div>
+          <paper-ripple fit></paper-ripple>
+        </div>
+      </a>
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+</section>
+
+<%= render "shared/submit_form" %>
+
+<script>
+  (function() {
+    $('.submit').on('click', function() {
+      submit_form('new_user', 'user', ['password', 'password_confirmation']);
+    });
+  })();
+</script>
