@@ -3,17 +3,16 @@ development:
   encoding: utf8
   database: lunch_development
   username: root
-  password: NACIEN1984
-
+  
 test:
   adapter: mysql2
   encoding: utf8
   database: lunch_test
   username: travis
-  password: NACIEN1984
+  
 production:
   adapter: mysql2
   encoding: utf8
   database: lunch
   username: root
-  password: NACIEN1984
+  
