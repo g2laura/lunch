@@ -2,36 +2,12 @@
 <html>
 <head>
   <title>Lunch</title>
-  <%= stylesheet_link_tag "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= html_import_tag "application" %>
-  <%= csrf_meta_tags %>
+
 </head>
 <body unresolved touch-action="auto">
 <app-bar></app-bar>
-  <core-header-panel mode="standard" class="container-fluid">
-    <core-toolbar>
-      <% if user_signed_in? %>
-        <paper-menu-button icon="menu">
-          <paper-item icon="settings" label="Settings">
-            <%= link_to '', edit_user_path(current_user) %>
-          </paper-item>
-          <% if current_user.is_admin? %>
-            <paper-item icon="account-child" label="Manage Users">
-              <%= link_to '', users_path %>
-            </paper-item>
-            <paper-item icon="alarm" label="Manage Lunch">
-              <%= link_to '', menu_path %>
-            </paper-item>
-            <paper-item icon="room" label="New Restaurant">
-              <%= link_to '', new_restaurant_path %>
-            </paper-item>
-            <paper-item icon="list" label="Export List">
-          </paper-item>
-          <% end %>
-        </paper-menu-button>
-      <% end %>
-      <div flex>
+
+
         <% if user_signed_in? %>
           <%= image_tag current_user.avatar.url(:avatar) if current_user.avatar %>
           <%= link_to "Choose wisely!", root_path %>
@@ -39,12 +15,7 @@
           <%= link_to "Lunch", root_path %>
         <% end %>
       </div>
-      <% if user_signed_in? %>
-        <%= link_to(destroy_user_session_path, :method => :delete) do %>
-          <core-icon-button icon="settings-power"></core-icon-button>
-        <% end %>
-      <% end %>
-    </core-toolbar>
+
 
     <% flash.each do |key, value| %>
       <div class="<%= flash_class(key) %>">
@@ -54,7 +25,6 @@
 
     <%= yield %>
 
-  </core-header-panel>
 
 </body>
 </html>
