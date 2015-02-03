@@ -1,4 +1,3 @@
-
 <section>
   <article class="row">
     <p> Winner: <%= @restaurant.name %> </p>
@@ -38,8 +37,6 @@
     <% end %>
   </article>
 </section>
-<paper-toast class="toast" text="" onclick="discardDraft(this);"></paper-toast>
-
 <% if current_user.is_admin? %>
   <%= link_to "Export Lunch list", lunch_path(@restaurant) %>
 <% end %>
