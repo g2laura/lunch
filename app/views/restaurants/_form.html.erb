@@ -5,7 +5,47 @@
   <%= image_tag @restaurant.image.url(:thumb) if @restaurant.image? %>
 
   <input type="file" class="filestyle file" data-buttonText="Image" data-buttonName="btn-primary" id="restaurant_image" name="restaurant[image]" value="<%= @restaurant.image %>">
+ 
+
+     <a>Name</a>
+    <input  type="text" layout vertical id="name" required value="<%= @restaurant.name %>">
+
+     <a> Description</a>
+    <input multiline  layout vertical id="description" value="<%= @restaurant.description %>">
   
+
+    <a> Slogan </a>
+    <input label="Slogan" type="text" layout vertical id="slogan" value="<%= @restaurant.slogan %>">
+
+
+    <a> Phone Number</a>
+    <input label="Phone Number" type="number" error="Please insert a phone number" layout vertical id="phone_number" required value="<%= @restaurant.phone_number %>">
+  
+
+
+    <a> Email </a>
+    <input label="Email" type="email" error="Please insert a valid email" layout vertical id="email" value="<%= @restaurant.email %>">
+ 
+
+    <a> Address </a>
+    <input multiline label="Address" layout vertical id="address" value="<%= @restaurant.address %>">
+
+
+    <a> Twitter </a>
+    <input label="Twitter" type="text" layout vertical id="twitter" value="<%= @restaurant.twitter %>">
+
+    <a> INstragram</a>
+    <input label="Instagram" type="text" layout vertical id="instagram" value="<%= @restaurant.instagram %>">
+
+    <a> Facebook</a>
+    <input label="Facebook" type="text" layout vertical id="facebook" value="<%= @restaurant.facebook %>">
+
+    <a> Website</a>
+    <input label="Website" type="text" layout vertical id="website" value="<%= @restaurant.website %>">
+
+<br>
+<input type="checkbox" id="delivery" checked="<%= @restaurant.delivery %>">Delivery
+<br>
 
   <div>
     <a class="submit" %>
@@ -17,7 +57,7 @@
             Update
           <% end %>
         </div>
-        
+        <paper-ripple fit></paper-ripple>
       </div>
     </a>
   </div>
