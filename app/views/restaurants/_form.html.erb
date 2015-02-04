@@ -1,65 +1,50 @@
 <%= form_for @restaurant, :html => { :multipart => true } do |f| %>
-
-  <%= hidden_fields(f, :name, :description, :slogan, :phone_number, :email, :address, :twitter, :instagram, :facebook, :website, :delivery) %>
-
-  <%= image_tag @restaurant.image.url(:thumb) if @restaurant.image? %>
-
-  <input type="file" class="filestyle file" data-buttonText="Image" data-buttonName="btn-primary" id="restaurant_image" name="restaurant[image]" value="<%= @restaurant.image %>">
-  <core-field>
-    <paper-input label="Name" type="text" layout vertical id="name" required value="<%= @restaurant.name %>"></paper-input>
-  </core-field>
-  <core-field>
-    <paper-input multiline label="Description" layout vertical id="description" value="<%= @restaurant.description %>"></paper-input>
-  </core-field>
-  <core-field>
-    <paper-input label="Slogan" type="text" layout vertical id="slogan" value="<%= @restaurant.slogan %>"></paper-input>
-  </core-field>
-  <core-field>
-    <paper-input label="Phone Number" type="number" error="Please insert a phone number" layout vertical id="phone_number" required value="<%= @restaurant.phone_number %>"></paper-input>
-  </core-field>
-  <core-field>
-    <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email" value="<%= @restaurant.email %>"></paper-input>
-  </core-field>
-  <core-field>
-    <paper-input multiline label="Address" layout vertical id="address" value="<%= @restaurant.address %>"></paper-input>
-  </core-field>
-  <core-field>
-    <paper-input label="Twitter" type="text" layout vertical id="twitter" value="<%= @restaurant.twitter %>"></paper-input>
-  </core-field>
-  <core-field>
-    <paper-input label="Instagram" type="text" layout vertical id="instagram" value="<%= @restaurant.instagram %>"></paper-input>
-  </core-field>
-  <core-field>
-    <paper-input label="Facebook" type="text" layout vertical id="facebook" value="<%= @restaurant.facebook %>"></paper-input>
-  </core-field>
-  <core-field>
-    <paper-input label="Website" type="text" layout vertical id="website" value="<%= @restaurant.website %>"></paper-input>
-  </core-field>
-  <paper-checkbox label="Delivery" id="delivery" checked="<%= @restaurant.delivery %>"></paper-checkbox>
-
-  <div>
-    <a class="submit" %>
-      <div class="button raised primary">
-        <div class="center" fit>
-          <% if @restaurant.new_record? %>
-            Create
-          <% else %>
-            Update
-          <% end %>
-        </div>
-        <paper-ripple fit></paper-ripple>
-      </div>
-    </a>
-  </div>
+<%= hidden_fields(f, :name, :description, :slogan, :phone_number, :email, :address, :twitter, :instagram, :facebook, :website, :delivery) %>
+<%= image_tag @restaurant.image.url(:thumb) if @restaurant.image? %>
+<input type="file" class="filestyle file" data-buttonText="Image" data-buttonName="btn-primary" id="restaurant_image" name="restaurant[image]" value="<%= @restaurant.image %>">
+<a>Name</a>
+<input type="text" layout vertical id="name" required value="<%= @restaurant.name %>">
+<a> Description</a>
+<input multiline layout vertical id="description" value="<%= @restaurant.description %>">
+<a> Slogan </a>
+<input label="Slogan" type="text" layout vertical id="slogan" value="<%= @restaurant.slogan %>">
+<a> Phone Number</a>
+<input label="Phone Number" type="number" error="Please insert a phone number" layout vertical id="phone_number" required value="<%= @restaurant.phone_number %>">
+<a> Email </a>
+<input label="Email" type="email" error="Please insert a valid email" layout vertical id="email" value="<%= @restaurant.email %>">
+<a> Address </a>
+<input multiline label="Address" layout vertical id="address" value="<%= @restaurant.address %>">
+<a> Twitter </a>
+<input label="Twitter" type="text" layout vertical id="twitter" value="<%= @restaurant.twitter %>">
+<a> INstragram</a>
+<input label="Instagram" type="text" layout vertical id="instagram" value="<%= @restaurant.instagram %>">
+<a> Facebook</a>
+<input label="Facebook" type="text" layout vertical id="facebook" value="<%= @restaurant.facebook %>">
+<a> Website</a>
+<input label="Website" type="text" layout vertical id="website" value="<%= @restaurant.website %>">
+<br>
+<input type="checkbox" id="delivery" checked="<%= @restaurant.delivery %>">Delivery
+<br>
+<div>
+<a class="submit" %>
+<div class="button raised primary">
+<div class="center" fit>
+<% if @restaurant.new_record? %>
+Create
+<% else %>
+Update
 <% end %>
-
+</div>
+<paper-ripple fit></paper-ripple>
+</div>
+</a>
+</div>
+<% end %>
 <%= render "shared/submit_form" %>
-
 <script>
-  (function() {
-
-    $('.submit').on('click', function() {
-      submit_form($(this).parent().parent().attr('id'), 'restaurant', ['name', 'description', 'slogan', 'phone_number', 'email', 'address', 'twitter', 'instagram', 'facebook', 'website', 'delivery']);
-    });
-  })();
+(function() {
+$('.submit').on('click', function() {
+submit_form($(this).parent().parent().attr('id'), 'restaurant', ['name', 'description', 'slogan', 'phone_number', 'email', 'address', 'twitter', 'instagram', 'facebook', 'website', 'delivery']);
+});
+})();
 </script>
