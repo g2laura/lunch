@@ -6,26 +6,25 @@
 
   <input type="file" class="filestyle file" data-buttonText="Image" data-buttonName="btn-primary" id="item_image" name="item[image]" value="<%= @item.image %>">
 
-  <core-field>
-    <paper-input label="Name" type="text" layout vertical id="name" required value="<%= @item.name %>"></paper-input>
-  </core-field>
-  <core-field>
-    <paper-input multiline label="Description" layout vertical id="description" value="<%= @item.description %>"></paper-input>
-  </core-field>
-  <core-field>
-    <paper-input label="Price" type="text" error="Please insert a price" layout vertical id="price" value="<%= @item.price %>" required></paper-input>
-  </core-field>
+     </br>Name
+    <input label="Name" type="text" layout vertical id="name" required value="<%= @item.name %>"></input>
+
+    </br>Description
+    <input multiline label="Description" layout vertical id="description" value="<%= @item.description %>"></input>
+
+    </br>Price
+    <input label="Price" type="text" error="Please insert a price" layout vertical id="price" value="<%= @item.price %>" required></input>
+
   <div>
     <a class="submit" %>
-      <div class="button raised primary">
-        <div class="center" fit>
+    <button type="button">
           <% if @item.new_record? %>
             Create
           <% else %>
             Update
           <% end %>
         </div>
-        <paper-ripple fit></paper-ripple>
+        </button> 
       </div>
     </a>
   </div>
