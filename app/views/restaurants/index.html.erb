@@ -2,21 +2,24 @@
   <% @restaurants.each do |restaurant| %>
     <section class="col-xs-3">
       <%= card_image_div(restaurant, current_user) %>
-        <paper-ripple class="recenteringTouch" fit></paper-ripple>
+
         <div id="users_<%= restaurant.id %>" class="show-users"></div>
       </div>
       <div class="row">
         <div class="manage-restaurant col-xs-6">
+
           <% if current_user.is_admin? %>
             <%= link_to edit_restaurant_path(restaurant) do %>
-              <paper-icon-button icon="create"></paper-icon-button>
+               <button type="button">UpDate</button> 
             <% end %>
+
             <%= link_to restaurant, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <paper-icon-button icon="delete"></paper-icon-button>
+              <button type="button">Delete</button> 
             <% end %>
           <% else %>
             &nbsp
           <% end %>
+
         </div>
         <a href="#" onclick="showUsers(<%= restaurant.id %>)">
           <div class="vote-count col-xs-6" id="vote_<%= restaurant.id %>">
