@@ -26,16 +26,18 @@
 <input type="checkbox" id="delivery" checked="<%= @restaurant.delivery %>">Delivery
 <br>
 <div>
+
 <a class="submit" %>
-<div class="button raised primary">
-<div class="center" fit>
+<button type="button">
 <% if @restaurant.new_record? %>
 Create
 <% else %>
 Update
 <% end %>
 </div>
-<paper-ripple fit></paper-ripple>
+</button> 
+
+
 </div>
 </a>
 </div>
