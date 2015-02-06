@@ -10,16 +10,12 @@
 <body unresolved touch-action="auto">
 <app-bar></app-bar>
 
-
     <toolbar>
       <% if user_signed_in? %>
-        
-
-          
+           
             <%= link_to "Settings", edit_user_path(current_user) %>
-          
-
-
+    
+            <%= link_to "New Restaurant", new_restaurant_path %>
 
           <% if current_user.is_admin? %>
 
@@ -27,15 +23,9 @@
 
              <%= link_to "Manage Lunch", menu_path %>
 
-             <%= link_to "New Restaurant", new_restaurant_path %>
-          
           <% end %>
 
-
       <% end %>
-
-
-
 
       <div flex>
         <% if user_signed_in? %>
@@ -45,12 +35,14 @@
           <%= link_to "Lunch", root_path %>
         <% end %>
       </div>
+
       <% if user_signed_in? %>
+
         <%= link_to(destroy_user_session_path, :method => :delete) do %>
-          <core-icon-button icon="settings-power"></core-icon-button>
+        <strong>Logout</strong> -- <span>Check it out!</span>
+        
         <% end %>
       <% end %>
-    </toolbar>
 
     <% flash.each do |key, value| %>
       <div class="<%= flash_class(key) %>">

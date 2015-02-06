@@ -1,33 +1,40 @@
 <h3>Listing items</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Image</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= item.name %></td>
-        <td><%= item.description %></td>
-        <td><%= number_to_currency(item.price) %></td>
-        <td><%= item.image %></td>
-        <td><%= link_to 'Show', restaurant_item_path(@restaurant, item) %></td>
-        <td><%= link_to 'Edit', edit_restaurant_item_path(@restaurant, item) %></td>
-        <td><%= link_to 'Destroy', restaurant_item_path(@restaurant, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.description %></td>
+          <td><%= number_to_currency(item.price) %></td>
+          <td><%= item.image %></td>
+          <td><%= link_to 'Show', restaurant_item_path(@restaurant, item) %></td>    
+          <% if current_user.is_admin? %>
+          <td><%= link_to 'Edit', edit_restaurant_item_path(@restaurant, item) %></td>
+          <td><%= link_to 'Destroy', restaurant_item_path(@restaurant, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
 
-<%= link_to 'New Item', new_restaurant_item_path(@restaurant) %>
+      <% end %>
+
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <% if current_user.is_admin? %>
+  <%= link_to 'New Item', new_restaurant_item_path(@restaurant) %>
+  <% end %>
+  <%= link_to "Back", :back %>
+
