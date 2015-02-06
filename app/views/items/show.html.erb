@@ -20,5 +20,8 @@
   <%= @item.image %>
 </p>
 
-<%= link_to 'Edit', edit_restaurant_item_path(@restaurant, @item) %> |
+<% if current_user.is_admin? %>
+<%= link_to 'Edit', edit_restaurant_item_path(@restaurant, @item) %> 
+<% end %>
+</br>
 <%= link_to 'Back', restaurant_items_path(@restaurant) %>
