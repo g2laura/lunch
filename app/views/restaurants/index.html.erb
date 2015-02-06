@@ -9,9 +9,6 @@
         <div class="manage-restaurant col-xs-6">
         
          
-
-
-
           <% if current_user.is_admin? %>
             
             <%= link_to edit_restaurant_path(restaurant) do %>
@@ -32,10 +29,9 @@
           </div>
         </a>
 
+        <%= link_to restaurant.name + ' menu', restaurant_items_path(restaurant) %>      
+        
 
-        <%= link_to restaurant.name + ' menu', restaurant_items_path(restaurant) %>
-            
-            
 
       </div>
     </section>
