@@ -8,8 +8,12 @@
       <div class="row">
         <div class="manage-restaurant col-xs-6">
         
+         
+
+
 
           <% if current_user.is_admin? %>
+            
             <%= link_to edit_restaurant_path(restaurant) do %>
                <button type="button">UpDate</button> 
             <% end %>
@@ -27,6 +31,12 @@
             Votes: <%= restaurant.users.count %>
           </div>
         </a>
+
+
+        <%= link_to restaurant.name + ' menu', restmenu_path(restaurant)%>
+            
+            
+
       </div>
     </section>
   <% end %>
