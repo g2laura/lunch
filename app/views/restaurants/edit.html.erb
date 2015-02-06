@@ -1,10 +1,6 @@
-<section>
-  <div>
-    <h3>Editing restaurant</h3>
+<h1>Editing restaurant</h1>
 
-    <%= render 'form' %>
+<%= render 'form' %>
 
-    <%= link_to 'Back', :back %>
-
-  </div>
-</section>
+<%= link_to 'Show', @restaurant %> |
+<%= link_to 'Back', restaurants_path %>
