@@ -3,16 +3,18 @@ development:
   encoding: utf8
   database: lunch_development
   username: root
+
   
 test:
   adapter: mysql2
   encoding: utf8
   database: lunch_test
   username: travis
+
   
 production:
   adapter: mysql2
   encoding: utf8
   database: lunch
   username: root
-  
+
