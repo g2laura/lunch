@@ -1,4 +1,7 @@
 <h3>Listing items</h3>
+
+<p> <%= @restaurant.name %> </p>
+
   <table>
     <thead>
       <tr>
@@ -13,8 +16,9 @@
     </thead>
 
     <tbody>
+
       <% @items.each do |item| %>
-        <tr>
+          <tr>
           <td><%= item.name %></td>
           <td><%= item.description %></td>
           <td><%= number_to_currency(item.price) %></td>
@@ -24,14 +28,17 @@
           <td><%= link_to 'Edit', edit_restaurant_item_path(@restaurant, item) %></td>
           <td><%= link_to 'Destroy', restaurant_item_path(@restaurant, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
+        </tr>
+       <% end %>
 
-      <% end %>
-
-      </tr>
     </tbody>
   </table>
 
   <br>
+
+
+
+
 
   <% if current_user.is_admin? %>
   <%= link_to 'New Item', new_restaurant_item_path(@restaurant) %>
