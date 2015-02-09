@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   load_and_authorize_resource except: [:create]
 
   def index
-    @items = Item.all
+    @items = Item.where(restaurant: @restaurant)
     respond_with(@restaurant, @items)
   end
 
