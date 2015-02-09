@@ -19,17 +19,19 @@ class LunchPdf < Prawn::Document
       self.column_widths = [40, 300, 200]
     end
     move_down(20)
-
     text "Total without tax: $#{@total_without_tax.round(2)}"
     text "Tax 7%: $#{@tax.round(2)}"
     text "Total: $#{@total.round(2)}", size: 15, style: :bold
   end
  
   def order_rows
-    print "hi there"
     [['User', 'Order', 'Price']] +
       @orders.map do |order|
-      [order.user.name, order.item.name, order.item.price.round(2)]
-      end
+        if !order.item.nil?  
+         [order.user.name, order.item.name, order.item.price.round(2)]
+         else
+           [order.user.name,"",0.00] 
+        end
+      end 
   end
 end

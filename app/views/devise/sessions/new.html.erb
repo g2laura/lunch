@@ -11,6 +11,9 @@
     <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
   <% end -%>
 
+<icon="store"></icon>
+ <%= f.select(:office, options_for_select([['El Dorado', User::DORADO], ['Clayton', User::CLAYTON]])) %>
+
   <div><%= f.submit "Sign in" %></div>
 <% end %>
 
