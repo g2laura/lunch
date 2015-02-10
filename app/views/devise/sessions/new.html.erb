@@ -12,7 +12,7 @@
   <% end -%>
 
 <icon="store"></icon>
- <%= f.select(:office, options_for_select([['El Dorado', User::DORADO], ['Clayton', User::CLAYTON]])) %>
+ <%= f.select(:office, options_for_select([['El Dorado', User::DORADO], ['Clayton', User::CLAYTON]], User::DORADO)) %>
 
   <div><%= f.submit "Sign in" %></div>
 <% end %>
