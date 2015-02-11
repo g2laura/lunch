@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    puts user_params.inspect
     @user = User.new(user_params)
     flash[:success] = 'The user was successfully created.' if @user.save
     flash[:error] = @user.errors.full_messages.join(", ") unless @user.errors.full_messages.blank?
