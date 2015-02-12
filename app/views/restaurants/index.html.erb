@@ -1,4 +1,5 @@
 <div class="row">
+  <%maxii = 0 %>
   <% @restaurants.each do |restaurant| %>
     <section class="col-xs-3">
       <%= card_image_div(restaurant, current_user) %>
@@ -30,10 +31,10 @@
           <div class="vote-count col-xs-6" id="vote_<%= restaurant.id %>">
             TheVotes: <%= restaurant.users.count %>
             <%maxi = restaurant.users.count %>
-            <%maxii = 3 %>
+
             <% if maxi > maxii %>
                <%maxii = maxi %>
-               <%= link_to restaurant.name + ' menu', restaurant_items_path(restaurant) %>  
+               <br>Current Winner</br> <%= link_to restaurant.name + ' menu', restaurant_items_path(restaurant) %>  
             <% end %>
 
 
