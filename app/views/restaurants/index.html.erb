@@ -28,13 +28,24 @@
         </div>
         <a href="#" onclick="showUsers(<%= restaurant.id %>)">
           <div class="vote-count col-xs-6" id="vote_<%= restaurant.id %>">
-            Votes: <%= restaurant.users.count %>
+            TheVotes: <%= restaurant.users.count %>
+            <%maxi = restaurant.users.count %>
+            <%maxii = 3 %>
+            <% if maxi > maxii %>
+               <%maxii = maxi %>
+               <%= link_to restaurant.name + ' menu', restaurant_items_path(restaurant) %>  
+            <% end %>
+
+
           </div>
         </a>
 
-        <%= link_to restaurant.name + ' menu', restaurant_items_path(restaurant) %>      
+    
         
       </div>
+    
+
+
     </section>
   <% end %>
 </div>
