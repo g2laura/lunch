@@ -1,47 +1,25 @@
 <%= devise_error_messages! %>
 
-<section class="login center">
   <h3>Sign up</h3>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "centered-panel" }) do |f| %>
-
-    <%= hidden_fields(f, :name, :email, :password, :password_confirmation) %>
-
-    </br>Name  
-    <input label="Name" type="text" error="Please insert a name" layout vertical id="name"></input>
-
-    </br>Email  
-    <input label="Email" type="email" error="Please insert a valid email" layout vertical id="email"></input>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
 
-    </br>Password  
-    <input label="Password" type="password" layout vertical id="password"></input>
-    
-
-    </br>Password confirmation
-    <input label="Password confirmation" type="password" layout vertical id="password_confirmation"></input>
- 
-
- 
-     <%= f.select(:office, options_for_select([['El Dorado', User::DORADO], ['Clayton', User::CLAYTON]])) %>
+  <div><%= f.label :name %><br />
+  <%= f.text_field :name, autofocus: true %></div>
 
 
-    <div class="center buttons">
-      <a class="submit" %>
-        <div class="button raised primary">
-          <div class="center" fit>Sign up</div>
-        </div>
-      </a>
-      <%= render "devise/shared/links" %>
-    </div>
-  <% end %>
-</section>
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %></div>
 
-<%= render "shared/submit_form" %>
+  <div><%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %></div>
 
-<script>
-  (function() {
-    $('.submit').on('click', function() {
-      submit_form('new_user', 'user', ['name', 'email', 'password', 'password_confirmation']);
-    });
-  })();
-</script>
+  <div><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+
+     <div><%= f.submit "Sign up" %></div>
+     <% end %>
+
+
+

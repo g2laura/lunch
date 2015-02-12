@@ -14,36 +14,14 @@
   </br>Password
     <input label="Password" type="password" layout required vertical id="password"></input>
 
+  <div>
+   <%= f.select(:office, options_for_select([['El Dorado', User::DORADO], ['Clayton', User::CLAYTON]], User::DORADO)) %></div>
+
   <% if current_user.is_admin? %>
 
     </br>
     <input type="checkbox" id="admin" checked="<%= @user.admin %>">Admin</br>
   <% end %>
 
-  
-  <div>
-    <a class="submit" %>
-      <div class="button raised primary">
-        <div class="center" fit>
-          <% if @user.new_record? %>
-            Create
-          <% else %>
-            Update
-          <% end %>
-        </div>
-        <paper-ripple fit></paper-ripple>
-      </div>
-    </a>
-  </div>
-<% end %>
-
-<%= render "shared/submit_form" %>
-
-<script>
-  (function() {
-
-    $('.submit').on('click', function() {
-      submit_form($(this).parent().parent().attr('id'), 'user', ['name', 'email', 'password', 'admin']);
-    });
-  })();
-</script>
+     <div><%= f.submit "Sign up" %></div>
+     <% end %>

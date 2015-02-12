@@ -11,8 +11,9 @@
 <app-bar></app-bar>
 
     <toolbar>
+
       <% if user_signed_in? %>
-           
+
             <%= link_to "Settings", edit_user_path(current_user) %>
     
             <%= link_to "New Restaurant", new_restaurant_path %>
@@ -51,6 +52,8 @@
     <% end %>
 
     <%= yield %>
+
+
 
 </body>
 </html>
