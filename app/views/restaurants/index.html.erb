@@ -2,8 +2,9 @@
   <%maxii = 0 %>
   <% @restaurants.each do |restaurant| %>
     <section class="col-xs-3">
-      <br><%= restaurant.name  %></br>
-      <%= card_image_div(restaurant, current_user) %>
+
+      <br><h4>&nbsp; &nbsp; &nbsp; &nbsp; <%= restaurant.name  %></h4></br>
+      &nbsp; &nbsp; &nbsp; &nbsp; <%= card_image_div(restaurant, current_user) %>
       
         <div id="users_<%= restaurant.id %>" class="show-users"></div>
       </div>
@@ -12,7 +13,7 @@
       <div class="row">
         <div class="manage-restaurant col-xs-6">
           <% if current_user.is_admin? %>
-            <%= link_to edit_restaurant_path(restaurant) do %>
+            &nbsp; &nbsp; &nbsp; &nbsp; <%= link_to edit_restaurant_path(restaurant) do %>
             <button type="button">Edit              
             <% end %>
 
@@ -34,7 +35,7 @@
             <% if maxi > maxii %>
                <%maxii = maxi %>
                <br>Current Winner: </br> 
-               <%= link_to restaurant.name + ' menu', restaurant_items_path(restaurant) %>
+                <%= link_to restaurant.name + ' menu', restaurant_items_path(restaurant) %>
 
             <% end %>
 
