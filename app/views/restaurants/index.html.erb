@@ -3,7 +3,7 @@
   <% @restaurants.each do |restaurant| %>
     <section class="col-xs-3">
 
-      <br><h4>&nbsp; &nbsp; &nbsp; &nbsp; <%= restaurant.name  %></h4></br>
+      <br><h3>&nbsp; &nbsp; &nbsp; &nbsp;<span class="label label-info"> <%= restaurant.name  %></span></h3></br>
       &nbsp; &nbsp; &nbsp; &nbsp; <%= card_image_div(restaurant, current_user) %>
       
         <div id="users_<%= restaurant.id %>" class="show-users"></div>
@@ -15,17 +15,18 @@
 
           <% if current_user.is_admin? %>
 
-            &nbsp; &nbsp; &nbsp; &nbsp; <%= link_to edit_restaurant_path(restaurant) do %>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <%= link_to edit_restaurant_path(restaurant) do %>
             <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default">Edit              
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Edit              
             <% end %>
-
+            </span>
             </button>
 
             
             <%= link_to restaurant, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <button type="button" class="btn btn-default">Delete
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"> Delete
             <% end %>
+            </span>
             </button>
             </div>
           <% else %>
@@ -35,11 +36,11 @@
         </div>
         <a href="#" onclick="showUsers(<%= restaurant.id %>)">
           <div class="vote-count col-xs-6" id="vote_<%= restaurant.id %>">
-            TheVotes: <%= restaurant.users.count %>
+            <span class="label label-info">TheVotes: <%= restaurant.users.count %></span>
             <%maxi = restaurant.users.count %>
             <% if maxi > maxii %>
                <%maxii = maxi %>
-               <br>Current Winner: </br> 
+               <br><span class="label label-primary">Current Winner: </span></br> 
                 <%= link_to restaurant.name + ' menu', restaurant_items_path(restaurant) %>
 
             <% end %>

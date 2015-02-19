@@ -1,7 +1,12 @@
-<h3>Listing items</h3>
+<h2><strong>Listing items</strong></h2>
 
-<p> <%= @restaurant.name %> </p>
-  <table>
+<p><span class="label label-info"> <%= @restaurant.name %></span></p>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>Name</th>
@@ -33,6 +38,9 @@
     </tbody>
   </table>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
   <br>
 
 
@@ -40,7 +48,13 @@
 
 
   <% if current_user.is_admin? %>
-  <%= link_to 'New Item', new_restaurant_item_path(@restaurant) %>
-  <% end %>
-  <%= link_to "Back", :back %>
+
+  <nav>
+  <ul class="pager">
+
+  <li><%= link_to 'New Item', new_restaurant_item_path(@restaurant) %>
+  <% end %></li>
+  <li><%= link_to "Back", :back %></li>
+  </ul>
+  </nav>
 
