@@ -60,6 +60,12 @@ gem 'prawn'
 
 gem 'prawn-table'
 
+gem "therubyracer"
+
+gem "less-rails"
+
+gem 'twitter-bootstrap-rails'
+
 # Redis-backed Ruby library for creating background jobs
 gem 'resque', :require => 'resque/server'
 
