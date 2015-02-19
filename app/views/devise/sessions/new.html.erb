@@ -1,10 +1,14 @@
 <h2>Sign in</h2>
 
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
+
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">Name</span>
   <%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= f.label :password %><br />
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">Email</span>
     <%= f.password_field :password, autocomplete: "off" %></div>
 
   <% if devise_mapping.rememberable? -%>
@@ -12,7 +16,9 @@
   <% end -%>
 
 <icon="store"></icon>
- <%= f.select(:office, options_for_select([['El Dorado', User::DORADO], ['Clayton', User::CLAYTON]], User::DORADO)) %>
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">Office</span>
+ <%= f.select(:office, options_for_select([['El Dorado', User::DORADO], ['Clayton', User::CLAYTON]], User::DORADO)) %></div>
 
   <div><%= f.submit "Sign in" %></div>
 <% end %>

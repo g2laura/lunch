@@ -3,6 +3,9 @@
 
   <%= render 'form' %>
 
-  <%= link_to 'Show', restaurant_item_path(@restaurant, @item) %> |
-  <%= link_to 'Back', :back %>
+  <nav>
+  <ul class="pager">
+  <li>
+  <%= link_to 'Show', restaurant_item_path(@restaurant, @item) %></li>
+  <li><%= link_to 'Back', :back %></li></ul></nav>
 </section>

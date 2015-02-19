@@ -1,4 +1,8 @@
+<section >
 <p id="notice"><%= notice %></p>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 <p>
   <strong>Name:</strong>
@@ -17,14 +21,24 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @item.image %>
+  <%=image_tag @item.image,  :class => "img-thumbnail"  %>
+
 </p>
 
-<% if current_user.is_admin? %>
-<%= link_to 'Edit', edit_restaurant_item_path(@restaurant, @item) %> 
-<% end %>
-</br>
 
-<%= link_to 'Back', restaurant_items_path(@restaurant) %>
-</br>
-<%= link_to 'Make my Order', restaurant_path(@restaurant) %>
+<% if current_user.is_admin? %>
+
+<nav>
+<ul class="pager">
+
+<li><%= link_to 'Edit', edit_restaurant_item_path(@restaurant, @item) %> 
+<% end %></li>
+
+
+<li><%= link_to 'Back', restaurant_items_path(@restaurant) %></li>
+
+<li><%= link_to 'Make my Order', restaurant_path(@restaurant) %></li>
+</ul>
+</nav>
+
+</section >
