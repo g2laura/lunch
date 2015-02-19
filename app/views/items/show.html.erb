@@ -1,3 +1,4 @@
+<section >
 <p id="notice"><%= notice %></p>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +21,8 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @item.image %>
+  <%=image_tag @item.image,  :class => "img-thumbnail"  %>
+
 </p>
 
 
@@ -38,3 +40,5 @@
 <li><%= link_to 'Make my Order', restaurant_path(@restaurant) %></li>
 </ul>
 </nav>
+
+</section >
