@@ -12,17 +12,22 @@
 
       <div class="row">
         <div class="manage-restaurant col-xs-6">
+
           <% if current_user.is_admin? %>
+
             &nbsp; &nbsp; &nbsp; &nbsp; <%= link_to edit_restaurant_path(restaurant) do %>
-            <button type="button">Edit              
+            <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default">Edit              
             <% end %>
 
+            </button>
 
             
             <%= link_to restaurant, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <button type="button">Delete
+            <button type="button" class="btn btn-default">Delete
             <% end %>
             </button>
+            </div>
           <% else %>
             &nbsp
           <% end %>

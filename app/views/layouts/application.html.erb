@@ -44,7 +44,7 @@
          </br>
          </br>
         <% if user_signed_in? %>
-          <%= image_tag current_user.avatar.url(:avatar) if current_user.avatar  %>
+          <%= image_tag current_user.avatar.url(:avatar),  :class => "img-circle" if current_user.avatar  %>
 
           <button type="button" class="btn btn-default btn-lg">
           <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>

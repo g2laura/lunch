@@ -1,23 +1,31 @@
 <h3>Users</h3>
 <% @users.each do |user| %>
 
-        <%= image_tag user.avatar.url(:avatar) if user.avatar? %>
+        <%= image_tag user.avatar.url(:avatar),  :class => "img-thumbnail"  if user.avatar? %>
         <%= image_tag "http://placehold.it/70x70&text=#{user.name}" unless user.avatar? %>
       </div>
     </div>
     <div >
-      <%= user.email %>
-      <%= user.name %>
-      <%= user.office %>
+      <span class="glyphicon glyphicon-send" aria-hidden="true"><strong>
+      <%= user.email %></strong></span>
+      </br>
+
+      <span class="glyphicon glyphicon-minus" aria-hidden="true"><strong>Name: 
+      <%= user.name %></strong></span>
+      </br>
+      <span class="glyphicon glyphicon-minus" aria-hidden="true"><strong>Office: 
+      <%= user.office %></strong></span>
     </div>
     <div class="col-xs-4">
       <% if current_user.is_admin? %>
         <%= link_to edit_user_path(user) do %>
-          <button type="button">Edit</button> 
+          <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default">Edit</button> 
         <% end %>
         <%= link_to user, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <button type="button">Delete</button> 
+          <button type="button" class="btn btn-default">Delete</button> 
         <% end %>
+        </div>      
       <% end %>
     </div>
   <% end %>

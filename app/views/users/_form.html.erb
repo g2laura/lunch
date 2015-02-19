@@ -2,19 +2,26 @@
 
   <%= hidden_fields(f, :name, :email, :password, :admin) %>
 
-  <%= image_tag @user.avatar.url(:thumb) if @user.avatar? %>
+
+  <%= image_tag @user.avatar.url(:thumb),  :class => "img-circle"  if @user.avatar? %>
 
   <input type="file" class="filestyle file" data-buttonText="Avatar" data-buttonName="btn-primary" id="user_avatar" name="user[avatar]" value="<%= @user.avatar %>">
-  </br>Name
-    <input label="Name" type="text" layout vertical id="name" required value="<%= @user.name %>"></input>
 
-  </br>Email
-    <input label="Email" type="email" error="Please insert a valid email" layout vertical id="email" required value="<%= @user.email %>"></input>
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">Name</span>
+  <%= f.text_field :name, autofocus: true %></div>
 
-  </br>Password
-    <input label="Password" type="password" layout required vertical id="password"></input>
 
-  <div>
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">Email</span>
+  <%= f.email_field :email, autofocus: true %></div>
+
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">Password</span>
+   <%= f.password_field :password, autocomplete: "off" %></div>
+
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">Office</span>
    <%= f.select(:office, options_for_select([['El Dorado', User::DORADO], ['Clayton', User::CLAYTON]], User::DORADO)) %></div>
 
   <% if current_user.is_admin? %>
