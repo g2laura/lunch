@@ -27,7 +27,11 @@ class LunchPdf < Prawn::Document
   def order_rows
     [['User', 'Order', 'Price']] +
       @orders.map do |order|
-      [order.user.name, order.item.name, order.item.price.round(2)]
-    end
+        if !order.item.nil?  
+         [order.user.name, order.item.name, order.item.price.round(2)]
+         else
+           [order.user.name,"",0.00] 
+        end
+      end 
   end
 end

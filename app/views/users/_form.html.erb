@@ -2,44 +2,33 @@
 
   <%= hidden_fields(f, :name, :email, :password, :admin) %>
 
-  <%= image_tag @user.avatar.url(:thumb) if @user.avatar? %>
+
+  <%= image_tag @user.avatar.url(:thumb),  :class => "img-circle"  if @user.avatar? %>
 
   <input type="file" class="filestyle file" data-buttonText="Avatar" data-buttonName="btn-primary" id="user_avatar" name="user[avatar]" value="<%= @user.avatar %>">
-  <core-field>
-    <paper-input label="Name" type="text" layout vertical id="name" required value="<%= @user.name %>"></paper-input>
-  </core-field>
-  <core-field>
-    <paper-input label="Email" type="email" error="Please insert a valid email" layout vertical id="email" required value="<%= @user.email %>"></paper-input>
-  </core-field>
-  <core-field>
-    <paper-input label="Password" type="password" layout required vertical id="password"></paper-input>
-  </core-field>
+
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">Name</span>
+  <%= f.text_field :name, autofocus: true %></div>
+
+
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">Email</span>
+  <%= f.email_field :email, autofocus: true %></div>
+
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">Password</span>
+   <%= f.password_field :password, autocomplete: "off" %></div>
+
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">Office</span>
+   <%= f.select(:office, options_for_select([['El Dorado', User::DORADO], ['Clayton', User::CLAYTON]], User::DORADO)) %></div>
+
   <% if current_user.is_admin? %>
-    <paper-checkbox label="Admin" id="admin" checked="<%= @user.admin %>"></paper-checkbox>
+
+    </br>
+    <input type="checkbox" id="admin" checked="<%= @user.admin %>">Admin</br>
   <% end %>
-  <div>
-    <a class="submit" %>
-      <div class="button raised primary">
-        <div class="center" fit>
-          <% if @user.new_record? %>
-            Create
-          <% else %>
-            Update
-          <% end %>
-        </div>
-        <paper-ripple fit></paper-ripple>
-      </div>
-    </a>
-  </div>
-<% end %>
 
-<%= render "shared/submit_form" %>
-
-<script>
-  (function() {
-
-    $('.submit').on('click', function() {
-      submit_form($(this).parent().parent().attr('id'), 'user', ['name', 'email', 'password', 'admin']);
-    });
-  })();
-</script>
+     <div><%= f.submit "Sign up" %></div>
+     <% end %>

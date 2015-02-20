@@ -13,7 +13,7 @@ class RestaurantsController < ApplicationController
     @items_by_user = Order.lunch_by_user(@restaurant, current_user)
     @total = Item.total_by_user(@restaurant, current_user)
     @votes = Restaurant.votes_by_restaurant_and_office(@restaurant, current_user.office)
-    respond_with(@restaurant, "votes" => @votes)
+    respond_with(@restaurant, @total, @items_by_user, "votes" => @votes)
   end
 
   def new

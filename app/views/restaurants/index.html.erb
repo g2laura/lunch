@@ -1,30 +1,63 @@
 <div class="row">
+  <%maxii = 0 %>
   <% @restaurants.each do |restaurant| %>
     <section class="col-xs-3">
-      <%= card_image_div(restaurant, current_user) %>
-        <paper-ripple class="recenteringTouch" fit></paper-ripple>
+
+      <br><h3>&nbsp; &nbsp; &nbsp; &nbsp;<span class="label label-info"> <%= restaurant.name  %></span></h3></br>
+      &nbsp; &nbsp; &nbsp; &nbsp; <%= card_image_div(restaurant, current_user) %>
+      
         <div id="users_<%= restaurant.id %>" class="show-users"></div>
       </div>
+
+
       <div class="row">
         <div class="manage-restaurant col-xs-6">
+
           <% if current_user.is_admin? %>
-            <%= link_to edit_restaurant_path(restaurant) do %>
-              <paper-icon-button icon="create"></paper-icon-button>
+
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <%= link_to edit_restaurant_path(restaurant) do %>
+            <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"> Edit              
             <% end %>
+            </span>
+            </button>
+
+            
             <%= link_to restaurant, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <paper-icon-button icon="delete"></paper-icon-button>
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"> Delete
             <% end %>
+            </span>
+            </button>
+            </div>
           <% else %>
             &nbsp
           <% end %>
+
         </div>
         <a href="#" onclick="showUsers(<%= restaurant.id %>)">
           <div class="vote-count col-xs-6" id="vote_<%= restaurant.id %>">
-            Votes: <%= restaurant.users.count %>
+            <span class="label label-info">TheVotes: <%= restaurant.users.count %></span>
+            <%maxi = restaurant.users.count %>
+            <% if maxi > maxii %>
+               <%maxii = maxi %>
+               <br><span class="label label-success"><h5>Current Winner: </h5></span></br> 
+                <%= link_to restaurant.name + ' menu', restaurant_items_path(restaurant) %>
+
+            <% end %>
+
+
           </div>
         </a>
+
+    
+        
       </div>
+    
+
+
     </section>
+   
+
   <% end %>
+
 </div>
-<paper-toast class="toast" text="" onclick="discardDraft(this);"></paper-toast>

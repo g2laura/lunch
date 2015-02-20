@@ -1,5 +1,5 @@
-
 <section>
+  
   <article class="row">
     <p> Winner: <%= @restaurant.name %> </p>
   </article>
@@ -9,15 +9,18 @@
     <div id="lunch_items">
       <ul>
         <% @items_by_user.each do |order| %>
+        <% if order.nil? %>
           <li id="item_<%= order.item.id %>">
             <%= order.item.name %> <%= number_to_currency(order.item.price) %>
             <a href="#" onclick="removeOrder(<%= @restaurant.id %>, <%= order.item.id %>)">x</a>
           </li>
+          <% end %>
         <% end %>
         <li>Total + 7%: <%= number_to_currency(@total + (@total * 0.07)) %></li>
       </ul>
     </div>
   </article>
+
 
   <article class="row">
     <h3> Choose your Lunch </h3>
@@ -38,8 +41,6 @@
     <% end %>
   </article>
 </section>
-<paper-toast class="toast" text="" onclick="discardDraft(this);"></paper-toast>
-
 <% if current_user.is_admin? %>
   <%= link_to "Export Lunch list", lunch_path(@restaurant) %>
 <% end %>

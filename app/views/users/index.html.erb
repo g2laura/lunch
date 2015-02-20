@@ -1,29 +1,35 @@
-<section class="list">
 <h3>Users</h3>
-
 <% @users.each do |user| %>
-  <div class="row">
-    <div class="col-xs-1">
-      <div class="round">
-        <%= image_tag user.avatar.url(:avatar) if user.avatar? %>
+
+        <%= image_tag user.avatar.url(:avatar),  :class => "img-thumbnail"  if user.avatar? %>
         <%= image_tag "http://placehold.it/70x70&text=#{user.name}" unless user.avatar? %>
       </div>
     </div>
-    <div class="col-xs-5 middle">
-      <%= user.email %>
+    <div >
+      <span class="glyphicon glyphicon-send" aria-hidden="true"><strong>
+      <%= user.email %></strong></span>
+      </br>
+
+      <span class="glyphicon glyphicon-minus" aria-hidden="true"><strong>Name: 
+      <%= user.name %></strong></span>
+      </br>
+      <span class="glyphicon glyphicon-minus" aria-hidden="true"><strong>Office: 
+      <%= user.office %></strong></span>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-4">
       <% if current_user.is_admin? %>
         <%= link_to edit_user_path(user) do %>
-          <paper-icon-button icon="create"></paper-icon-button>
+          <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default">Edit</button> 
         <% end %>
         <%= link_to user, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <paper-icon-button icon="delete"></paper-icon-button>
+          <button type="button" class="btn btn-default">Delete</button> 
         <% end %>
+        </div>      
       <% end %>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <%= link_to 'New User', new_user_path %>
 </section>

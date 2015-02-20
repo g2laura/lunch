@@ -8,43 +8,64 @@
   <%= csrf_meta_tags %>
 </head>
 <body unresolved touch-action="auto">
-<app-bar></app-bar>
-  <core-header-panel mode="standard" class="container-fluid">
-    <core-toolbar>
+
+<nav class="navbar navbar-default navbar-fixed-top">
       <% if user_signed_in? %>
-        <paper-menu-button icon="menu">
-          <paper-item icon="settings" label="Settings">
-            <%= link_to '', edit_user_path(current_user) %>
-          </paper-item>
+            <div class="container">
+            <ul class="nav nav-pills">
+            <li role="presentation">
+                <%= link_to "Settings", edit_user_path(current_user) %>
+            </li>
+            <li role="presentation">
+            <%= link_to "New Restaurant", new_restaurant_path %>
+            </li>
+
           <% if current_user.is_admin? %>
-            <paper-item icon="account-child" label="Manage Users">
-              <%= link_to '', users_path %>
-            </paper-item>
-            <paper-item icon="alarm" label="Manage Lunch">
-              <%= link_to '', menu_path %>
-            </paper-item>
-            <paper-item icon="room" label="New Restaurant">
-              <%= link_to '', new_restaurant_path %>
-            </paper-item>
-            <paper-item icon="list" label="Export List">
-          </paper-item>
+                      <li role="presentation">
+             <%= link_to "Manage Users", users_path %>
+             </li>
+            <li role="presentation">
+             <%= link_to "Manage Lunch", menu_path %>
+            </li>
+            </ul>
+
+             </div>
           <% end %>
-        </paper-menu-button>
+
       <% end %>
+</nav>
+
+<app-bar></app-bar>
+
+
+
       <div flex>
+         </br>
+         </br>
+         </br>
         <% if user_signed_in? %>
-          <%= image_tag current_user.avatar.url(:avatar) if current_user.avatar %>
+          <%= image_tag current_user.avatar.url(:avatar),  :class => "img-circle" if current_user.avatar  %>
+
+          <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>
           <%= link_to "Choose wisely!", root_path %>
+          </button>
         <% else %>
+          <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
           <%= link_to "Lunch", root_path %>
+          </button>
         <% end %>
-      </div>
+
       <% if user_signed_in? %>
+
+        <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-off" aria-hidden="true">
         <%= link_to(destroy_user_session_path, :method => :delete) do %>
-          <core-icon-button icon="settings-power"></core-icon-button>
+        <strong>Logout</span></strong></span></button>
+        
         <% end %>
       <% end %>
-    </core-toolbar>
 
     <% flash.each do |key, value| %>
       <div class="<%= flash_class(key) %>">
@@ -54,7 +75,7 @@
 
     <%= yield %>
 
-  </core-header-panel>
+
 
 </body>
 </html>
