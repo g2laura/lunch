@@ -1,14 +1,21 @@
-<h2>Sign in</h2>
+    <div class="container">    
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign In</div>
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
 
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
   <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">Name</span>
+  <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-user"></i> Email</span>
   <%= f.email_field :email, autofocus: true %></div>
 
   <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">Email</span>
+  <span class="input-group-addon" id="basic-addon1"> <i class="glyphicon glyphicon-lock"></i> Password</span>
     <%= f.password_field :password, autocomplete: "off" %></div>
 
   <% if devise_mapping.rememberable? -%>
@@ -17,7 +24,7 @@
 
 <icon="store"></icon>
   <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">Office</span>
+  <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-briefcase"></i> Office</span>
  <%= f.select(:office, options_for_select([['El Dorado', User::DORADO], ['Clayton', User::CLAYTON]], User::DORADO)) %></div>
 
   <div><%= f.submit "Sign in" %></div>
