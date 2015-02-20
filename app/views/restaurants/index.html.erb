@@ -40,7 +40,7 @@
             <%maxi = restaurant.users.count %>
             <% if maxi > maxii %>
                <%maxii = maxi %>
-               <br><span class="label label-primary">Current Winner: </span></br> 
+               <br><span class="label label-success"><h5>Current Winner: </h5></span></br> 
                 <%= link_to restaurant.name + ' menu', restaurant_items_path(restaurant) %>
 
             <% end %>
